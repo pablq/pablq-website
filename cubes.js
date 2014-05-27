@@ -9,7 +9,6 @@ var VIEW_ANGLE = 90,
 var $container = $("#container");
 
 var renderer = new THREE.WebGLRenderer({alpha:true});
-renderer.setClearColor(0xFFFFFF, 0);
 renderer.setSize(WIDTH, HEIGHT);
 $container.append(renderer.domElement);
 
@@ -26,34 +25,38 @@ scene.add(camera);
 var cubes = [];
 
 var genNewCube = function(){
-    var geo = new THREE.BoxGeometry(70,70,55);
-    var mat = new THREE.MeshLambertMaterial({color:0x000000});
-    var cu = new THREE.Mesh(geo, mat);
+    var geo = new THREE.BoxGeometry(111,111,111);
+    var mat = new THREE.MeshLambertMaterial({color:0x000000, opacity:1, transparent:true});
+    var new_cube = new THREE.Mesh(geo, mat);
     if((Math.floor(Math.random() * 10))%2){
-        cu.incX = true;
+        new_cube.incX = true;
     } else {
-        cu.incX = false;
+        new_cube.incX = false;
     }
     if((Math.floor(Math.random() * 10))%2){
-        cu.incY = true;
+        new_cube.incY = true;
     } else {
-        cu.incY = false;
+        new_cube.incY = false;
     }
     if((Math.floor(Math.random() * 10))%2){
-        cu.incZ = true;
+        new_cube.incZ = true;
     } else {
-        cu.incZ = false;
+        new_cube.incZ = false;
     }
-    return cu;
+    return new_cube;
 }
-
-var first = genNewCube();
 
 var randColor = function(anObject){
     var red = Math.random();
     var green = Math.random();
     var blue = Math.random();
     anObject.material.color.setRGB(red, green, blue);
+    anObject.material.opacity += (Math.random()-.5)*.125;
+    if(anObject.material.opacity < .3){
+        anObject.material.opacity = .3;
+    } else if(anObject.material.opacity > .8){
+        anObject.material.opacity = .8;
+    }
 }
 
 var randPos = function(anObject){
@@ -64,11 +67,6 @@ var randPos = function(anObject){
     anObject.position.setY(y);
     anObject.position.setZ(z);
 }
-
-randPos(first);
-randColor(first);
-scene.add(first);
-cubes.push(first);
 
 var newLight = function(){
     var thisLight = new THREE.PointLight( 0xEFFAE5 );
@@ -112,12 +110,12 @@ var convert_y = function(y){
 }
 
 $("body").click(function(event){
-    var cu = genNewCube();
-    cu.position.x = convert_x(event.clientX);
-    cu.position.y = convert_y(event.clientY);
-    randColor(cu);
-    scene.add(cu);
-    cubes.push(cu);
+    var cube = genNewCube();
+    cube.position.x = convert_x(event.clientX);
+    cube.position.y = convert_y(event.clientY);
+    randColor(cube);
+    scene.add(cube);
+    cubes.push(cube);
 });
 
 var updatePos = function(anObject){

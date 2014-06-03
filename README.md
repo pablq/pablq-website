@@ -1,4 +1,4 @@
-dumbfloatingcubes
+studio cubes
 =================
 
 a dumb web app for art's sake

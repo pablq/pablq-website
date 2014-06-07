@@ -74,9 +74,9 @@ h2 {
     font-weight: bold;
 }
 
-a:link {color:#00FFFF;}      /* unvisited link */
-a:visited {color:#FFFF00;}  /* visited link */
-a:hover {color:#FFFFFF;}  /* mouse over link */
-a:active {color:#FF0000;} 
+a:link {color:#abcdef;}      /* unvisited link */
+a:visited {color:#bcdefa;}  /* visited link */
+a:hover {color:#cdefab;}  /* mouse over link */
+a:active {color:#defabc;} 
 
 

@@ -74,8 +74,8 @@ h2 {
     font-weight: bold;
 }
 
-a:link { color:#abc }
-a:visited { color:#bc2; }
+a:link { color:#111 }
+a:visited { color:#111; }
 a:hover { color:#c21; }
 a:active { color:#210; } 
 

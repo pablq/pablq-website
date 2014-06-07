@@ -4,9 +4,9 @@ var fs = require("fs");
 
 function requestHandler(req, res) {
     var filePath = "." + req.url;
-    if (filePath == "./") {
+    if (filePath === "./") {
         filePath = "./index.html";
-    };
+    }
     var extname = path.extname(filePath);
     var contentType = "text/html";
 

@@ -4,79 +4,12 @@ body {
     text-align: center;
 }
 
-div {
-    position:absolute;
-    width:100%;
-    height:800px;
-}
-
-#superfluous {
-    top:25px;
-    width:1000px;
-    height:725px;
-    margin-left:-500px;
-    left:50%;
-    background-image:url("grid.png");
-    background-size: 100% 100%;
-}
-
-#frame {
-    position:absolute;
-    top:50%;
-    margin-top:-310px;
-    width:900px;
-    height:620px;
-    margin-left:-450px;
-    left:50%;
-    background-image:url("frame.png");
-    background-size: 100% 100%;
-}
-
-#container {
-    position:relative;
-    top:112.5px;
-    left:125px;
-    width: 750px;
-    height: 500px;
-}
-
-h1 {
-    position:relative;
-    z-index: 2;
-    top:20.5px;
-    display: inline;
-    padding:5px 10px;
-    font-family: Courier New;
-    font-size: 25px;
-    color: #A01040;
-    font-weight: bold;
-    background-color: #FFF0F0;
-    border-width: 2px;
-    border-style: groove;
-    border-color: #FF0F00;
-    border-radius: 5px 5px 5px 5px;
-}
-
-p {
-    position:relative;
-    top:32.5px;
-    height: 15px;
-    font-family: Arial;
-    font-size: 19px;
-    color: #FFC0CB;
-}
-
-h2 {
-    position: relative;
-    top: 655px;
-    font-family: Courier New;
-    font-size: 20px;
-    font-weight: bold;
-}
-
 a:link { color:#111 }
 a:visited { color:#111; }
 a:hover { color:#c21; }
 a:active { color:#210; } 
 
-
+img {
+  border:3px solid #111;
+  border-radius:3px;
+}

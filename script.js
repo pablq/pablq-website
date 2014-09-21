@@ -178,5 +178,6 @@ var postStyle = {
 }
 
 var headlineStyle = {
-  textShadow: "2px 2px 2px pink"
+  textShadow: "2px 2px 2px pink",
+  fontFamily: "Helvetica"
 }

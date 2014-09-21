@@ -1,15 +1,5 @@
 body {
-    background-image:url("background.png");
-    background-size:contain;
-    text-align: center;
-}
-
-a:link { color:#111 }
-a:visited { color:#111; }
-a:hover { color:#c21; }
-a:active { color:#210; } 
-
-img {
-  border:3px solid #111;
-  border-radius:3px;
+  background-image: url("background.png");
+  background-size: cover;
+  text-align:center;
 }

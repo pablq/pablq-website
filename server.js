@@ -26,6 +26,10 @@ function requestHandler(req, res) {
               res.writeHead(500);
               res.end();
             } else {
+              var time = new Date();
+              fs.appendFile("nukes.txt", time.toString() + "\n", function (err) {
+  // Do nothing
+              });
               res.writeHead(200, { "Content-Type" : "text/json" });
               res.end(JSON.stringify(allComments));
             }

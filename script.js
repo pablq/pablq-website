@@ -33,6 +33,19 @@ var CommentBox = React.createClass({
       }.bind(this)
     });
   },
+  handleNuke: function () {
+    $.ajax({
+      url: this.props.url,
+      dataType: "json",
+      type: "DELETE",
+      success: function () {
+        this.setState({ data : [] });
+      }.bind(this),
+      error: function (xhr, status, err) {
+        console.log(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
   componentDidMount: function() {
     this.loadCommentsFromServer();
     setInterval(this.loadCommentsFromServer, this.props.pollInterval);
@@ -43,6 +56,7 @@ var CommentBox = React.createClass({
         <h1>Comments</h1>
         <CommentList data={this.state.data}/>
         <CommentForm onCommentSubmit={this.handleCommentSubmit} />
+        <Nuke onNukeSubmit={this.handleNuke} />
       </div>
     );
   }
@@ -102,7 +116,22 @@ var Comment = React.createClass({
   }
 });
 
+var Nuke = React.createClass({
+  nuke: function () {
+    event.preventDefault();
+    this.props.onNukeSubmit();
+    return;
+  },
+  render: function() {
+    return (            
+      <form className="nuke" onSubmit={this.nuke}>
+        <input type="submit" value="NUKE COMMENTS" />
+      </form>
+    );
+  }
+});
+
 React.renderComponent(
-    <CommentBox url="comments.json" pollInterval={15000} />,
+    <CommentBox url="comments.json" pollInterval={5000} />,
     document.getElementById('content')
 );

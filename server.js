@@ -26,13 +26,25 @@ function requestHandler(req, res) {
               res.writeHead(500);
               res.end();
             } else {
-              res.writeHead(200);
-              res.end();
+              res.writeHead(200, { "Content-Type" : "text/json" });
+              res.end(JSON.stringify(allComments));
             }
           });
         });
       }
     });
+  } else if (req.method === "DELETE" && filePath === "./comments.json") { 
+    var emptyComments = [];
+    fs.writeFile("comments.json", JSON.stringify(emptyComments), function (err) {
+      if (err) {
+        console.log("there was an error nuking comments.json", err);
+        res.writeHead(500);
+        res.end();
+      } else {
+        res.writeHead(200, { "Content-Type" : "text/json" });
+        res.end("[]");
+      }
+    }); 
   } else if (req.method === "GET") {
     if (filePath === "./") {
       filePath = "./index.html";

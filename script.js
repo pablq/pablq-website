@@ -1,4 +1,5 @@
 /** @jsx React.DOM */
+$("#gif").hide();
 
 // various React components.  All of them exist within the CommentBox
 var CommentBox = React.createClass({
@@ -35,6 +36,14 @@ var CommentBox = React.createClass({
     });
   },
   handleNuke: function () {
+    // show gif
+    $("#content").hide();
+    $("#gif").show();
+
+    setTimeout(function(){
+      $("#content").show();
+      $("#gif").hide();
+    }, 5000)
     $.ajax({
       url: this.props.url,
       dataType: "json",
@@ -136,6 +145,7 @@ var Nuke = React.createClass({
 React.renderComponent(
     <CommentBox url="comments.json" pollInterval={5000} />,
     document.getElementById('content')
+
 );
 
 // React styles defined

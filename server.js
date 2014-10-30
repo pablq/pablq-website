@@ -28,7 +28,7 @@ function requestHandler(req, res) {
             } else {
               var time = new Date();
               fs.appendFile("nukes.txt", time.toString() + "\n", function (err) {
-  // Do nothing
+                  // Do nothing
               });
               res.writeHead(200, { "Content-Type" : "text/json" });
               res.end(JSON.stringify(allComments));

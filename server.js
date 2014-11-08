@@ -57,6 +57,8 @@ function requestHandler(req, res) {
     var contentType = "text/html";
 
     switch (extname) {
+      case ".gif":
+        contentType = "image/gif";
       case ".png":
         contentType = "image/png";
         break;

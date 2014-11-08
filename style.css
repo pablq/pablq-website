@@ -3,3 +3,11 @@ body {
   background-size: cover;
   text-align:center;
 }
+
+#gif {
+	position: fixed;
+	top: 30%;
+	left: 50%;
+	margin-left: -120px;
+	margin-top: -110px;
+}

@@ -1,4 +1,4 @@
-/** @jsx React.DOM */
+/* @jsx React.DOM */
 
 // This is the main component in the mini-site. It has a number of methods that handle
 // updating it's state data and even changing the state of the app.  You'll notice that the

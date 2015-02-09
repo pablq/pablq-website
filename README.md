@@ -1,1 +1,1 @@
-Playing with React.js on the front end and basic Node.js on the back end.
+Currently just serving static html with a plain node.js backend.

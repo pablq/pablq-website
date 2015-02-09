@@ -4,10 +4,32 @@ body {
   text-align:center;
 }
 
+#two_images { 
+    text-align: center; 
+    padding-top: 115px; 
+    padding-bottom: 200px; 
+}
+
 #gif {
 	position: fixed;
 	top: 30%;
 	left: 50%;
 	margin-left: -120px;
 	margin-top: -110px;
+}
+
+a:link {
+    color: white;
+}
+
+a:hover {
+    color: gray;
+}
+
+a:active {
+    color: black;
+}
+
+a:visited {
+    color: white;
 }

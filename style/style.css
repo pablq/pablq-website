@@ -2,6 +2,7 @@ body {
   background-image: url("/img/background.png");
   background-size: cover;
   text-align:center;
+  font-family: courier;
 }
 
 #two_images { 
@@ -16,6 +17,10 @@ body {
 	left: 50%;
 	margin-left: -120px;
 	margin-top: -110px;
+}
+
+a {
+    text-decoration: none;
 }
 
 a:link {

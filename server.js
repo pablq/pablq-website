@@ -5,47 +5,63 @@ var http = require("http"),
 
 function requestHandler(req, res) {
 
-    var filePath = "." + req.url;
+    if (req.method !== "GET") {
 
-    if (filePath === "./") {
-      filePath = "./index.html";
-    }
+        res.writeHead(501);
+        res.end();
 
-    var extname = path.extname(filePath);
+    } else {
 
-    switch (extname) {
-        case ".gif":
-            contentType = "image/gif";
-            break;
-        case ".png":
-            contentType = "image/png";
-            break;
-        case ".js":
-            contentType = "text/javascript";
-            break;
-        case ".css":
-            contentType = "text/css";
-            break;
-        default:
-            contentType = "text/html";
-    }
+        var filePath = "." + req.url;
 
-    fs.exists(filePath, function(exists) {
-        if (exists) {
-            fs.readFile(filePath, function(err, content) {
-                if (err) {
-                    res.writeHead(500);
-                    res.end();
-                } else {
-                    res.writeHead(200, { "Content-Type" : contentType });
-                    res.end(content);
-                }
-            });
-        } else {
-            res.writeHead(404);
-            res.end();
+        if (filePath === "./") {
+          filePath = "./index.html";
         }
-    });
+
+        var extname = path.extname(filePath);
+
+        switch (extname) {
+            case ".gif":
+                contentType = "image/gif";
+                break;
+            case ".png":
+                contentType = "image/png";
+                break;
+            case ".js":
+                contentType = "text/javascript";
+                break;
+            case ".css":
+                contentType = "text/css";
+                break;
+            default:
+                contentType = "text/html";
+        }
+
+        fs.exists(filePath, function(exists) {
+            
+            if (exists) {
+
+                fs.readFile(filePath, function(err, content) {
+                    
+                    if (err) {
+                        
+                        res.writeHead(500);
+                        res.end();
+
+                    } else {
+
+                        res.writeHead(200, { "Content-Type" : contentType });
+                        res.end(content);
+                    }
+                });
+
+            } else {
+
+                res.writeHead(404);
+                res.end();
+            }
+        });
+    }
 }
 
 http.createServer(requestHandler).listen(port);

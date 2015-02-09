@@ -3,8 +3,6 @@ body {
     background-size: cover;
     padding: 150px;
     text-align:center;
-    font-family: courier;
-    color: white;
 }
 
 img {
@@ -12,13 +10,11 @@ img {
 }
 
 a {
+    font-family: courier;
     text-decoration: none;
+    color: white;
 }
 
 a:hover {
-    color: gray;
-}
-
-a:visited {
-    color: white;
+    color: red;
 }

@@ -1,38 +1,22 @@
 body {
-  background-image: url("/img/background.png");
-  background-size: cover;
-  text-align:center;
-  font-family: courier;
+    background-image: url("/img/background.png");
+    background-size: cover;
+    padding: 150px;
+    text-align:center;
+    font-family: courier;
+    color: white;
 }
 
-#two_images { 
-    text-align: center; 
-    padding-top: 115px; 
-    padding-bottom: 200px; 
-}
-
-#gif {
-	position: fixed;
-	top: 30%;
-	left: 50%;
-	margin-left: -120px;
-	margin-top: -110px;
+img {
+    margin-bottom: 100px;
 }
 
 a {
     text-decoration: none;
 }
 
-a:link {
-    color: white;
-}
-
 a:hover {
     color: gray;
-}
-
-a:active {
-    color: black;
 }
 
 a:visited {

@@ -49,3 +49,4 @@ function requestHandler(req, res) {
 }
 
 http.createServer(requestHandler).listen(port);
+console.log("listening on port:", port);

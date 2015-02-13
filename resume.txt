@@ -8,19 +8,19 @@ CONTACT
 EDUCATION
 
     edX.org -> 2014 and 2015
-        Currently enrolled in BerkeleyX's CS188x: Artificial Intelligence
-        Completed HarvardX's CS50x: Introduction to Computer Science
+        Currently enrolled in BerkeleyX's CS188x: Artificial Intelligence.
+        Completed HarvardX's CS50x: Introduction to Computer Science.
     Oxbow, Saugatuck, MI -> 2010
-        Intensive two-week printmaking course on scholarship
+        Recieved scholarship to participate in two-week advanced printmaking course.
     Colorado College, Colorado Springs, CO -> 2005 to 2009
-        Bachelor of Arts
+        Degree: Bachelor of Arts
         Major: Philosophy, Minor: Art Studio
-        Overall GPA: 3.6, Philosophy GPA: 3.5, Art GPA: 3.8
+        GPA: 3.6, Philosophy GPA: 3.5, Art GPA: 3.8
         Dean's List -> 2008 to 2009
     Pontificia Universidad Catolica del Peru, Lima, Peru -> 2007
         Semester of study abroad; all courses taken in Spanish.
     Oak Park and River Forest High School, Oak Park, IL -> 2001 to 2005
-        National Hispanic Scholar
+        National Hispanic Scholar.
 
 WORK
 
@@ -30,7 +30,7 @@ WORK
     Art Institute of Chicago / Chicago, IL -> 2010
         Position -> Prints and Drawings Department Intern
 
-DEVELOPMENT SKILLS
+DEVELOPMENT SKILLS (skill level == comfort level)
 
     Languages:
         JavaScript  -> skilled! 
@@ -49,10 +49,10 @@ DEVELOPMENT SKILLS
 
     Web Development:
         Backend:    
-            Node.js -> novice
+            Node.js -> intermediate 
             Express -> intermediate
             MySQL   -> novice
-            MongoDB -> novice
+            MongoDB -> novice 
         Frontend: 
             AngularJS -> intermediate
             ReactJS   -> novice 
@@ -68,7 +68,7 @@ DEVELOPMENT SKILLS
     Other:
         Git             -> intermediate
         Testing         -> novice 
-        Documentation   -> intermediate
+        Documenting     -> intermediate
         Problem Solving -> skilled!
 
 PROJECT EXPERIENCE
@@ -90,7 +90,7 @@ PROJECT EXPERIENCE
         Backend  -> WAMP, PHP 
         Hosting  -> Linux Server, Linux FTP
 
-    Bug-fixed and updated mobile survey app
+    Bug-fixed and updated iOS mobile survey app
         App     -> HTML, CSS, JQuery, Phonegap/Cordova, Xcode
         Dist.   -> Amazon S3
         Backend -> Node.js, Express, MySQL, Sequelize
@@ -98,7 +98,7 @@ PROJECT EXPERIENCE
 
     Helped build a CRUD Admin Portal for an ill-fated cross-platform mobile app
         Frontend -> AngularJS
-        Backend  -> Node.js, Express, MongoDB, Mongoose, 
+        Backend  -> Node.js, Express, MongoDB, Mongoose
         Hosting  -> Amazon S3
 
     Maintained and troubleshot B to B incentive platform web application
@@ -132,17 +132,17 @@ PROJECT EXPERIENCE
 
     Built personal website
         Current iteration:
-            Frontend -> Bare bones HTML and CSS with node.js generated images
-            Backend  -> Bare bones node.js
+            Frontend -> Bare bones HTML and CSS with Node.js generated images
+            Backend  -> Bare bones Node.js
             Hosting  -> Heroku
         Past iterations:
             Frontend -> ThreeJS floating cube game,
                         ReactJS tutorial comment box,
                         AngularJS image gallery
-            Backend  -> Bare bones node.js
+            Backend  -> Bare bones Node.js
             Hosting  -> Heroku, Raspberry Pi
 
-    Sometimes I write node.js scripts to generate images from input data
+    Sometimes I write Node.js scripts to generate images from input data
         Node.js, GraphicsMagick
 
     I currently love writing mini C programs for fun
@@ -154,7 +154,7 @@ fine art                -> skilled!
 traditional printmaking -> skilled!
 3D modelling            -> novice
 Arduino                 -> novice
-Raspberry Pi            -> novice
+Raspberry Pi            -> intermediate
 Artificial Intelligence -> novice
 3D printing             -> novice
 
@@ -162,10 +162,10 @@ FINAL STATEMENT
 
 I am brand new to Computer Science and I am loving every second of it. I wrote my first line of code on Codecademy.com in October of 2013. Two months later I enrolled in Harvard's (free!) Introduction to Computer Programming through edX.org and my world changed completely.
 
-After I completed the course, LaunchCode, a Saint Louis not-for-profit, set me up with an interview for an apprenticeship at Fusion Marketing. The day after my interview I was offered the job based on my genuine excitement for Computer Science, as well as my ability to learn programming languages and concepts quickly.
+After I completed the course, LaunchCode, a Saint Louis not-for-profit, set me up with an interview for an apprenticeship at Fusion Marketing. On the day after my interview I was offered the position based on my genuine excitement for Computer Science, my ability to learn programming languages and concepts quickly, and the fact that I got along well with the team.
 
-I did well in the apprenticeship, and as a result I was offered a full-time position as a Junior Developer. The folks at Fusion taught me so much and I am forever indebted to them for their help. Fusion is an excellent company to work for. I can't say enough good things about the company or the people that it is composed of.
+I did well in the apprenticeship, and as a result I was offered a full-time job as a Junior Developer. The folks at Fusion taught me so much and I am forever indebted to them for taking me on. Fusion is an excellent company to work for - I can't say enough positive things about the company or the people that make it.
 
 Recently, though, I decided to move home to Chicago from Saint Louis. This is where my family is, and where my heart has always been.
 
-Now, I'm excited to find a job in Chicago where I can continue to grow, but perhaps slow down a bit and fill in some of the gaps of my extremely fast development as a programmer. That said, I wouldn't mind learning a new language or two.
+Now I'm excited to find a job in Chicago where I can continue to grow, but perhaps slow down a bit and let the depth of everything I've learned sink in. That said, I wouldn't mind learning a new language or framework or two.

@@ -51,7 +51,7 @@ DEVELOPMENT SKILLS (skill level == comfort level)
         Backend:    
             Node.js -> intermediate 
             Express -> intermediate
-            MySQL   -> novice
+            MySQL   -> intermediate
             MongoDB -> novice 
         Frontend: 
             AngularJS -> intermediate

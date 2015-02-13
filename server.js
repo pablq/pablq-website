@@ -48,8 +48,8 @@ function requestHandler(req, res) {
                     
                     if (err) {
                         
-                        res.writeHead(500);
-                        res.end();
+                        res.writeHead(500, { "Content-Type" : "text/plain" });
+                        res.end("server error");
 
                     } else {
 
@@ -60,8 +60,8 @@ function requestHandler(req, res) {
 
             } else {
 
-                res.writeHead(404);
-                res.end();
+                res.writeHead(404, { "Content-Type" : "text/plain" });
+                res.end("file not found");
             }
         });
     }

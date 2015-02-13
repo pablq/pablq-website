@@ -7,8 +7,8 @@ function requestHandler(req, res) {
 
     if (req.method !== "GET") {
 
-        res.writeHead(501);
-        res.end();
+        res.writeHead(501, { "Content-Type" : "text/plain" });
+        res.end("CANNOT " + req.method);
 
     } else {
 
@@ -49,7 +49,7 @@ function requestHandler(req, res) {
                     if (err) {
                         
                         res.writeHead(500, { "Content-Type" : "text/plain" });
-                        res.end("server error");
+                        res.end("SERVER ERROR");
 
                     } else {
 
@@ -61,7 +61,7 @@ function requestHandler(req, res) {
             } else {
 
                 res.writeHead(404, { "Content-Type" : "text/plain" });
-                res.end("file not found");
+                res.end("FILE NOT FOUND");
             }
         });
     }

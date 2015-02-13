@@ -33,6 +33,9 @@ function requestHandler(req, res) {
             case ".css":
                 contentType = "text/css";
                 break;
+            case ".txt":
+                contentType = "text/plain";
+                break;
             default:
                 contentType = "text/html";
         }

@@ -39,12 +39,14 @@ DEVELOPMENT SKILLS
         Objective C -> intermediate
         C           -> intermediate
         BASH        -> novice 
+
     Mobile Development:
         Native iOS           -> intermediate
         Native Android       -> intermediate
         Hybrid
             Phonegap/Cordova -> intermediate
         App Submit Process   -> intermediate
+
     Web Development:
         Backend:    
             Node.js -> novice
@@ -62,6 +64,7 @@ DEVELOPMENT SKILLS
             Heroku              -> intermediate
             Amazon Web Services -> novice
             FTP Server          -> novice
+
     Other:
         Git             -> intermediate
         Testing         -> novice 
@@ -70,38 +73,45 @@ DEVELOPMENT SKILLS
 
 PROJECT EXPERIENCE
 
-    Work:
+    At work: 
 
     Built in house tool for image generation with data from survey app
         Frontend -> HTML, CSS
         Backend  -> Node.js, Express, ImageMagick, MySQL, Sequelize
         Hosting  -> Heroku
+
     Built micro-site for party RSVPs
         Frontend -> HTML, responsive CSS
         Backend  -> Node.js, Express, MySQL, Sequelize
         Hosting  -> Heroku
+
     Overhauled look of americanhoney.com
         Frontend -> HTML, responsive CSS
         Backend  -> WAMP, PHP 
         Hosting  -> Linux Server, Linux FTP
+
     Bug-fixed and updated mobile survey app
         App     -> HTML, CSS, JQuery, Phonegap/Cordova, Xcode
         Dist.   -> Amazon S3
         Backend -> Node.js, Express, MySQL, Sequelize
         Hosting -> Heroku
+
     Helped build a CRUD Admin Portal for an ill-fated cross-platform mobile app
         Frontend -> AngularJS
         Backend  -> Node.js, Express, MongoDB, Mongoose, 
         Hosting  -> Amazon S3
+
     Maintained and troubleshot B to B incentive platform web application
         Frontend -> AngularJS
         Backend  -> Node.js, Express, MySQL, Sequelize
         Hosting  -> Linux Server
+
     Updated cross-platform promotional mobile application
         App     -> AngularJS, Phonegap/Cordova, Xcode, Eclipse
         Dist.   -> App Store, Google Play Store
         Backend -> CoffeeScript, Node.js, Express, platform-ng, MongoDB, Mongoose
         Hosting -> Linux Server
+
     Overhauled cross-platform mobile app and built admin portal to manage downloadable content
         App:
             iOS     -> Objective C, Xcode, Core Data
@@ -112,12 +122,14 @@ PROJECT EXPERIENCE
             Backend  -> Node.js, Express, GraphicsMagick, GhostScript, MySQL, Sequelize
             Hosting  -> Heroku, Amazon S3
 
-    Personal:
+    At home: 
 
     Wrote C program that manipulates / rearranges bmp images
         C, BASH
+
     Built iOS game that randomly generates digital paintings
         Objective C, Core Graphics
+
     Built personal website
         Current iteration:
             Frontend -> Bare bones HTML and CSS with node.js generated images
@@ -129,20 +141,22 @@ PROJECT EXPERIENCE
                         AngularJS image gallery
             Backend  -> Bare bones node.js
             Hosting  -> Heroku, Raspberry Pi
-    Sometimes I write node.js scripts to generate images
+
+    Sometimes I write node.js scripts to generate images from input data
         Node.js, GraphicsMagick
+
     I currently love writing mini C programs for fun
         C, gcc, vim
 
 RELATED INTERESTS
 
-    fine art                -> skilled!
-    traditional printmaking -> skilled!
-    3D modelling            -> novice
-    Arduino                 -> novice
-    Raspberry Pi            -> novice
-    Artificial Intelligence -> novice
-    3D printing             -> novice
+fine art                -> skilled!
+traditional printmaking -> skilled!
+3D modelling            -> novice
+Arduino                 -> novice
+Raspberry Pi            -> novice
+Artificial Intelligence -> novice
+3D printing             -> novice
 
 FINAL STATEMENT
 

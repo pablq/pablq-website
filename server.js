@@ -8,7 +8,7 @@ function requestHandler(req, res) {
     if (req.method !== "GET") {
 
         res.writeHead(501, { "Content-Type" : "text/plain" });
-        res.end("CANNOT " + req.method);
+        res.end("CANNOT " + req.method + "\n");
 
     } else {
 
@@ -49,7 +49,7 @@ function requestHandler(req, res) {
                     if (err) {
                         
                         res.writeHead(500, { "Content-Type" : "text/plain" });
-                        res.end("SERVER ERROR");
+                        res.end("SERVER ERROR\n");
 
                     } else {
 
@@ -61,11 +61,10 @@ function requestHandler(req, res) {
             } else {
 
                 res.writeHead(404, { "Content-Type" : "text/plain" });
-                res.end("FILE NOT FOUND");
+                res.end("FILE NOT FOUND\n");
             }
         });
     }
 }
 
 http.createServer(requestHandler).listen(port);
-console.log("listening on port:", port);

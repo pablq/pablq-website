@@ -143,7 +143,7 @@ PROJECT EXPERIENCE
             Hosting  -> Heroku, Raspberry Pi
 
     Sometimes I write Node.js scripts to generate images from input data
-        Node.js, GraphicsMagick
+        Node.js, GraphicsMagick, Arduino, Processing
 
     I currently love writing mini C programs for fun
         C, gcc, vim

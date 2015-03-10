@@ -8,7 +8,7 @@ CONTACT
 WORK
 
     Fusion Marketing, Saint Louis, MO -> May 2014 to Sept 2014
-        Position -> LaunchCode Apprentice (yeah LaunchCode! http://www.c-span.org/video/?c4530637/lashana-lewis)
+        Position -> LaunchCode Apprentice
     Fusion Marketing, Saint Louis, Mo -> Sept 2014 to Feb 2015
         Position -> Junior Developer
     Trader Joe's, Chicago, IL and Brentwood, MO -> 2011 to 2014
@@ -21,11 +21,11 @@ EDUCATION
         Currently enrolled in BerkeleyX's CS188x: Artificial Intelligence.
         Completed HarvardX's CS50x: Introduction to Computer Science.
     Oxbow, Saugatuck, MI -> 2010
-        Recieved scholarship to participate in two-week advanced printmaking course.
+        Received scholarship to participate in two-week advanced printmaking course.
     Colorado College, Colorado Springs, CO -> 2005 to 2009
         Degree: Bachelor of Arts
-        Major: Philosophy, Minor: Art Studio
-        GPA: 3.6, Philosophy GPA: 3.5, Art GPA: 3.8
+        Major : Philosophy
+        GPA   : 3.6 
         Dean's List -> 2008 to 2009
     Pontificia Universidad Catolica del Peru, Lima, Peru -> 2007
         Semester of study abroad; all courses taken in Spanish.
@@ -36,11 +36,11 @@ DEVELOPMENT SKILLS (skill level == comfort level)
 
     Languages:
         JavaScript  -> skilled! 
-        Java        -> intermediate
-        Python      -> novice 
-        Objective C -> intermediate
         C           -> intermediate
-        BASH        -> novice 
+        Java        -> intermediate
+        Objective C -> intermediate
+        Python      -> novice
+        Ruby        -> novice
 
     Mobile Development:
         Native iOS           -> intermediate
@@ -162,12 +162,22 @@ Artificial Intelligence -> novice
 
 FINAL STATEMENT
 
-I am new to Computer Science and I am loving every second of it. I wrote my first line of code on Codecademy.com in October of 2013. Two months later I enrolled in Harvard's (free!) Introduction to Computer Programming through edX.org and my world changed completely.
+I am new to Computer Science / Development and I am loving it every bit of it. I've only been coding for just over a year, but it's already flipped my world on it's head many times over.
 
-After I completed the course, LaunchCode, an AWESOME Saint Louis not-for-profit, set me up with an interview for an apprenticeship at Fusion Marketing. On the day after my interview I was offered the position based on my genuine excitement for Computer Science, my ability to learn programming languages and concepts quickly, and the fact that I got along well with the team.
+After college it took me some time to figure out what I wanted to do. At first I focused on making fine art / etchings and I had some success with it: http://www.spudnikpress.org/2011/01/pablo-philipps/. But, I was unsatisfied. I wanted to pursue something that is more intellectually stimulating and technologically relevant.
 
-I did well in the apprenticeship (LaunchCode even featured me! http://www.launchcode.org), and as a result I was offered a full-time job as a Junior Developer. The folks at Fusion taught me so much and I am forever indebted to them for taking me on. Fusion is an excellent company to work for - I can't say enough positive things about the company or the people that make it.
+I first became intrigued by the prospect of making 'computer art' after seeing a particularly good art show several years ago. Over the course of the next couple years I experimented with making glitch art, 3d printing / modelling, setting up a raspberry pi, etc. All of these things were cool, but it wasn't until I wrote my first line of code that I found something digital that I could really dig in to.
 
-Recently, though, I decided to move home to Chicago from Saint Louis. This is where my family is, and where my heart has always been.
+Coding provided me a medium that satisfied both my desire for an intellectual challenge and my artistic need for creation. What's more, I found that my education in Philosophy prepared me well for the kind of thinking required to write good code, and that my experience as an artist provided me the confidence to just build and learn from mistakes.
 
-Now I'm excited to find a job in Chicago where I can continue to grow, but perhaps slow down a bit and let the depth of everything I've learned sink in. That said, I wouldn't mind learning a new language or framework or two.
+So, I decided to quit my service job and dedicate myself full-time to learning to code.
+
+A few months later, a Saint Louis nonprofit called LaunchCode (Here's the President talking about them: http://www.c-span.org/video/?c4530637/lashana-lewis) set me up with an interview at Fusion Marketing for an apprenticeship position. I was offered the position, I did well, and after four months Fusion brought me on as a full-fledged Junior Developer. I did so well, in fact, that LaunchCode even featured me on their website -> http://www.launchcode.org !
+
+My experience at Fusion was a whirlwind. I was hired to write JavaScript web applications but I had never even written JavaScript or built any kind of web service before! My only coding experience had been with C and limited Objective C. Well, I spent the first few weeks asking a ton of questions, reading A LOT, and ended up building my first website -> an internal tool to generate a .png image with data from a current marketing program. The boss was impressed with the speed at which I picked up the technologies so he trusted me with increasingly complex assignments which were usually well above my experience level (see PROJECT EXPRERIENCE).
+
+The "trial by fire" approach could be very stressful - sometimes I was asked to implement features that I had no idea how to do (I would figure them out), sometimes I broke stuff (And had to scramble to resolve the issues), sometimes I worked on three or four unrelated projects in one day (with impending deadlines), etc. - but, I wouldn't trade it for anything. It took me from knowing absolutely nothing about development to knowing a solid something.  
+
+Now, I'm the first to admit that my professional development skills young and imperfect. The nature of my first and only development job was extremely fast paced and didn't always leave time for best practices. However, I think that I have a lot of potential and an attitude that welcomes feedback and opportunities for growth.
+
+Now that I'm home in Chicago, I'm looking forward to finding a job where I can continue to develop as a professional programmer. I'm happy to learn anything required for the job as long as the workplace fosters a healthy work-life balance.

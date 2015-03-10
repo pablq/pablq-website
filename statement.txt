@@ -1,0 +1,28 @@
+CONTACT
+
+    Pablo Ignacio Philipps
+    pabloignaciophilipps@gmail.com
+    https://github.com/pablq
+    http://www.pablq.org
+
+PERSONAL STATEMENT
+
+I am new to Computer Science / Development and I am loving it every bit of it. I've only been coding for just over a year, but it's already flipped my world on it's head many times over.
+
+After college it took me some time to figure out what I wanted to do. At first I focused on making fine art / etchings and I had some success with it -> (http://www.spudnikpress.org/2011/01/pablo-philipps/), but I was unsatisfied. I wanted to pursue something that is more intellectually stimulating and technologically relevant.
+
+I first became intrigued by the prospect of making 'computer art' after seeing a particularly good art show several years ago. Over the course of the next couple years I experimented with making glitch art, 3d printing / modelling, setting up a raspberry pi, etc. All of these things were cool, but it wasn't until I wrote my first line of code that I found something digital that I could really dig into.
+
+Coding provided me a medium that satisfied both my desire for an intellectual challenge and my artistic need for creation. What's more, I found that my education in Philosophy prepared me well for the kind of thinking required to write good code, and that my experience as an artist provided me the confidence to just build and learn from mistakes.
+
+So, I decided to quit my service job and dedicate myself full-time to learning to code.
+
+A few months later, a Saint Louis nonprofit called LaunchCode (Here's the President talking about them: http://www.c-span.org/video/?c4530637/lashana-lewis) set me up with an interview at Fusion Marketing for an apprenticeship position. I was offered the position, I did well, and after four months Fusion brought me on as a full-fledged Junior Developer. I did so well, in fact, that LaunchCode and eDX even featured me on their websites (http://www.launchcode.org and https://www.edx.org/blog/edx-launchcode-learner-story-pablo)!
+
+My experience at Fusion was a whirlwind. I was hired to write JavaScript web applications but I had never even written JavaScript or built any kind of web service before! My only coding experience had been with C and limited Objective C. Well, I spent the first few weeks asking a ton of questions, reading A LOT, and ended up building my first website -> an internal tool to generate a .png image with data from a current marketing program. The boss was impressed with the speed at which I picked up the technologies so he trusted me with increasingly complex assignments which were usually well above my experience level.
+
+The "trial by fire" approach was definitely stressful at times - sometimes I was asked to implement features that I had no idea how to do (I would figure them out), sometimes I broke stuff (And had to scramble to resolve the issues), sometimes I worked on three or four unrelated projects in one day (with impending deadlines), etc. - but, I wouldn't trade it for anything. It took me from knowing absolutely nothing about development to knowing a solid something.  
+
+Now, I'm the first to admit that my professional development skills are young and imperfect. The nature of my first and only development job was extremely fast paced and didn't always leave time for important process details. However, I think that I have a lot of potential and an attitude that welcomes feedback and opportunities for growth.
+
+Now that I'm home in Chicago, I'm looking forward to finding a job where I can continue to develop as a professional programmer. I'm happy to learn anything required for the job as long as the workplace fosters a healthy work-life balance. That way, at home, I can continue to pursue the passion that first brought me to coding: making art.

@@ -164,7 +164,7 @@ FINAL STATEMENT
 
 I am new to Computer Science / Development and I am loving it every bit of it. I've only been coding for just over a year, but it's already flipped my world on it's head many times over.
 
-After college it took me some time to figure out what I wanted to do. At first I focused on making fine art / etchings and I had some success with it: http://www.spudnikpress.org/2011/01/pablo-philipps/. But, I was unsatisfied. I wanted to pursue something that is more intellectually stimulating and technologically relevant.
+After college it took me some time to figure out what I wanted to do. At first I focused on making fine art / etchings and I had some success with it -> (http://www.spudnikpress.org/2011/01/pablo-philipps/), but I was unsatisfied. I wanted to pursue something that is more intellectually stimulating and technologically relevant.
 
 I first became intrigued by the prospect of making 'computer art' after seeing a particularly good art show several years ago. Over the course of the next couple years I experimented with making glitch art, 3d printing / modelling, setting up a raspberry pi, etc. All of these things were cool, but it wasn't until I wrote my first line of code that I found something digital that I could really dig into.
 

@@ -8,9 +8,9 @@ CONTACT
 WORK
 
     Fusion Marketing, Saint Louis, MO -> May 2014 to Sept 2014
-        Position -> Apprentice (See Project Experience)
+        Position -> LaunchCode Apprentice (yeah LaunchCode! http://www.c-span.org/video/?c4530637/lashana-lewis)
     Fusion Marketing, Saint Louis, Mo -> Sept 2014 to Feb 2015
-        Position -> Junior Developer (See Project Experience)
+        Position -> Junior Developer
     Trader Joe's, Chicago, IL and Brentwood, MO -> 2011 to 2014
     Art Institute of Chicago / Chicago, IL -> 2010
         Position -> Prints and Drawings Department Intern
@@ -164,7 +164,7 @@ FINAL STATEMENT
 
 I am new to Computer Science and I am loving every second of it. I wrote my first line of code on Codecademy.com in October of 2013. Two months later I enrolled in Harvard's (free!) Introduction to Computer Programming through edX.org and my world changed completely.
 
-After I completed the course, LaunchCode, a Saint Louis not-for-profit, set me up with an interview for an apprenticeship at Fusion Marketing. On the day after my interview I was offered the position based on my genuine excitement for Computer Science, my ability to learn programming languages and concepts quickly, and the fact that I got along well with the team.
+After I completed the course, LaunchCode, an AWESOME Saint Louis not-for-profit, set me up with an interview for an apprenticeship at Fusion Marketing. On the day after my interview I was offered the position based on my genuine excitement for Computer Science, my ability to learn programming languages and concepts quickly, and the fact that I got along well with the team.
 
 I did well in the apprenticeship (LaunchCode even featured me! http://www.launchcode.org), and as a result I was offered a full-time job as a Junior Developer. The folks at Fusion taught me so much and I am forever indebted to them for taking me on. Fusion is an excellent company to work for - I can't say enough positive things about the company or the people that make it.
 

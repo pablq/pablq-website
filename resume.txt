@@ -130,7 +130,7 @@ PROJECT EXPERIENCE
         C, BASH
 
     Built iOS game that randomly generates digital paintings
-        Objective C, Core Graphics
+        Objective C, Core Graphics, AutoLayout
 
     Built personal website
         Current iteration:

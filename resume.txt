@@ -159,3 +159,11 @@ Arduino                 -> novice
 Raspberry Pi            -> intermediate
 Artificial Intelligence -> novice
 3D printing             -> novice
+
+REFERENCES
+
+Bradley Harris - VP of Technology at Fusion Marketing
+bharris@thisisfusion.com
+
+Zach Lou - Education Director at LaunchCode
+zach@lauchcode.org

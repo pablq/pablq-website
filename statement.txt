@@ -17,13 +17,13 @@ Coding provided me a medium that satisfied both my desire for an intellectual ch
 
 So, I decided to quit my service job and dedicate myself full-time to learning to code.
 
-A few months later, a Saint Louis nonprofit called LaunchCode set me up with an interview at Fusion Marketing for an apprenticeship position. I was offered the position, I did well, and after four months Fusion brought me on as a full-fledged Junior Developer.
+A few months later, a Saint Louis nonprofit called LaunchCode set me up with an interview at Fusion Marketing for an apprenticeship position. I was offered the position. I did well. And after four months Fusion brought me on as a full-fledged Junior Developer.
 
-My experience at Fusion was a whirlwind. I was hired to write JavaScript web applications but I had never even written JavaScript or built any kind of web service before! My only coding experience had been with C and limited Objective C. Well, I spent the first few weeks asking a ton of questions, reading A LOT, and ended up building my first website -> an internal tool to generate a .png image with data from a current marketing program. The boss was impressed with the speed at which I picked up the technologies so he trusted me with increasingly complex assignments which were usually well above my experience level.
+My experience at Fusion was a whirlwind. I was hired to write JavaScript web applications but I had never even written JavaScript or built any kind of website before! My only coding experience had been some C and limited Objective C. Well, I spent the first few weeks asking a ton of questions, reading A LOT, and I ended up building my first website -> an internal tool to generate a .png image with data from a current marketing campaign. The boss was impressed with the speed at which I picked up the technologies so he trusted me with increasingly complex assignments.
 
-The "trial by fire" approach was definitely stressful at times - sometimes I was asked to implement features that I had no idea how to do (I would figure them out), sometimes I broke stuff (And had to scramble to resolve the issues), sometimes I worked on three or four unrelated projects in one day (with impending deadlines), etc. - but, I wouldn't trade it for anything. It took me from knowing absolutely nothing about development to knowing a solid something.
+The "trial by fire" approach was definitely stressful at times - sometimes I was asked to implement features that I had no idea how to build (I would figure them out), sometimes I broke stuff (and had to scramble to resolve the issues I created), sometimes I worked on several unrelated projects in one day (with impending deadlines), etc. - but, I wouldn't trade it for anything. It took me from knowing absolutely nothing about development to knowing a solid something. I have my coworkers at Fusion to thank for that.
 
-Now, I am the first to admit that my professional development skills are young and imperfect, but, I think that I have the aptitude and attitude necessary to learn anything in this field. And I know that I have a lot to learn.
+All that said, I know I have a TON to learn. But, I think that I have the aptitude and attitude necessary to become an excellent programmer.
 
 LINKS 
 

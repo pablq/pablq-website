@@ -23,7 +23,7 @@ My experience at Fusion was a whirlwind. I was hired to write JavaScript web app
 
 The "trial by fire" approach was definitely stressful at times - sometimes I was asked to implement features that I had no idea how to build (I would figure them out), sometimes I broke stuff (and had to scramble to resolve the issues I created), sometimes I worked on several unrelated projects in one day (with impending deadlines), etc. - but, I wouldn't trade it for anything. It took me from knowing absolutely nothing about development to knowing a solid something. I have my coworkers at Fusion to thank for that.
 
-All that said, I know I have a TON to learn. But, I think that I have the aptitude and attitude necessary to become an excellent programmer.
+All that said, I know I have a TON to learn. 
 
 LINKS 
 

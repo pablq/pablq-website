@@ -3,7 +3,7 @@ var http = require("http"),
     fs = require("fs"),
     port = Number(process.env.PORT || 5000);
 
-function requestHandler(req, res) {
+var requestHandler = function (req, res) {
 
     if (req.method !== "GET") {
 

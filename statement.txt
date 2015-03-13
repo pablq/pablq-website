@@ -21,9 +21,9 @@ A few months later, a Saint Louis nonprofit called LaunchCode set me up with an 
 
 My experience at Fusion was a whirlwind. I was hired to write JavaScript web applications but I had never even written JavaScript or built any kind of website before! My only coding experience had been some C and limited Objective C. Well, I spent the first few weeks asking a ton of questions, reading A LOT, and I ended up building my first website -> an internal tool to generate a .png image with data from a current marketing campaign. The boss was impressed with the speed at which I picked up the technologies so he trusted me with increasingly complex assignments.
 
-The "trial by fire" approach was definitely stressful at times - sometimes I was asked to implement features that I had no idea how to build (I would figure them out), sometimes I broke stuff (and had to scramble to resolve the issues I created), sometimes I worked on several unrelated projects in one day (with impending deadlines), etc. - but, I wouldn't trade it for anything. It took me from knowing absolutely nothing about development to knowing a solid something. I have my coworkers at Fusion to thank for that.
+The "trial by fire" approach was definitely stressful at times - sometimes I was asked to implement features that I had no idea how to build (I would figure them out), sometimes I broke stuff (and had to scramble to resolve the issues I created), sometimes I worked on several unrelated projects in one day (with impending deadlines), etc. - but, I wouldn't trade it for anything. It took me from knowing absolutely nothing about development to knowing a solid something.
 
-All that said, I know I have a TON to learn. 
+I'd like to acknowledge that I have A LOT to learn, and I realize my skills have not had much time to mature. But, I'm proud of how far I've come, and I'm thankful for everyone that has helped me along the way.
 
 LINKS 
 

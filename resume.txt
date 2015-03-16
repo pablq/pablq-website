@@ -32,7 +32,7 @@ EDUCATION
     Oak Park and River Forest High School, Oak Park, IL -> 2001 to 2005
         National Hispanic Scholar.
 
-DEVELOPMENT SKILLS (skill level == comfort level)
+DEVELOPMENT SKILLS 
 
     Languages:
         JavaScript  -> skilled! 
@@ -98,7 +98,7 @@ PROJECT EXPERIENCE
         Backend -> Node.js, Express, MySQL, Sequelize
         Hosting -> Heroku
 
-    Helped build a CRUD Admin Portal for an ill-fated cross-platform mobile app
+    Helped build a CRUD Admin Portal for a cross-platform mobile app
         Frontend -> AngularJS
         Backend  -> Node.js, Express, MongoDB, Mongoose
         Hosting  -> Amazon S3

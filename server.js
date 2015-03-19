@@ -36,6 +36,9 @@ var requestHandler = function (req, res) {
             case ".txt":
                 contentType = "text/plain";
                 break;
+            case ".pdf":
+                contentType = "application/pdf";
+                break;
             default:
                 contentType = "text/html";
         }

@@ -33,7 +33,7 @@ module.exports = function() {
 
     function decodeURIComponent (c) {
         c = c.replace(/%[ABC][A-Z0-9](%20)+/g, ""); // special consideration for problematic line (has Outs)
-        c = c.replace(/(%20){3}/g, ", "); // line between teams / scores
+        c = c.replace(/(%20){3}/g, " vs. "); // line between teams / scores
         c = c.replace(/$%20/,""); // if the field leads with a space, delete it
         c = c.replace(/%20/g," ");
         return c;

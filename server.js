@@ -1,6 +1,7 @@
 var http = require("http"),
     path = require("path"),
     fs = require("fs"),
+    getGames = require("./script.js"),
     port = Number(process.env.PORT || 5000);
 
 var requestHandler = function (req, res) {
@@ -16,6 +17,7 @@ var requestHandler = function (req, res) {
 
         if (filePath === "./") {
           filePath = "./index.html";
+            console.log(getGames());
         }
 
         var extname = path.extname(filePath);

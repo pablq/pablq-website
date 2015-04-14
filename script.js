@@ -1,56 +1,76 @@
 var http = require("http"),
-    qs = require("querystring");
-
-var options = {
+    qs = require("querystring"),
+    options = {
         hostname: "sports.espn.go.com",
         path: "/mlb/bottomline/scores",
         port: 80,
         method: "GET"
     };
 
-var req = http.request(options, function (res) {
-    var data = "";
+module.exports = function() {
 
-    console.log(res.statusCode, res.statusMessage); 
-    res.setEncoding("utf8");
-    res.on("data", function (chunk) {
-        data += chunk;
+    var req,
+        result;
+
+    req = http.request(options, function (res) {
+
+        var data = "";
+        res.setEncoding("utf8");
+        res.on("data", function (chunk) {
+            data += chunk;
+        });
+        res.on("end", function () {
+            var schedule = qs.parse(data, null, null, { decodeURIComponent: decodeURIComponent });
+            return sortByGame(schedule);
+        });
     });
-    res.on("end", function () {
-        var schedule = qs.parse(data, null, null, { decodeURIComponent: decodeURIComponent });
-        formatSchedule(schedule);
+
+    req.on("error", function (e) {
+        return null;
     });
-});
 
-req.on("error", function (e) {
-    console.log("problem with request: " + e.message);
-});
+    req.end();
 
-req.end();
-
-function decodeURIComponent (c) {
-    c = c.replace(/%[ABC][A-Z0-9](%20)+/g, ""); // special consideration for problematic line (with outs)
-    c = c.replace(/(%20){3}/g, ", "); // line between teams / scores
-    c = c.replace(/$%20/,""); // if the field leads with a space, delete it
-    c = c.replace(/%20/g," ");
-    return c;
-}
-
-function formatSchedule(s) {
-    if (s["mlb_s_loaded"]) {
-        setKeys(s);        
+    function decodeURIComponent (c) {
+        c = c.replace(/%[ABC][A-Z0-9](%20)+/g, ""); // special consideration for problematic line (has Outs)
+        c = c.replace(/(%20){3}/g, ", "); // line between teams / scores
+        c = c.replace(/$%20/,""); // if the field leads with a space, delete it
+        c = c.replace(/%20/g," ");
+        return c;
     }
-}
 
-function setKeys(s) {
-    var count = parseInt(s["mlb_s_count"]),
-        keys = Object.keys(s);
-    
-    for (var i = 0, len = keys.length; i < len; i += 1) { 
-        
-        console.log("key:");
-        console.log(keys[i]);
-        console.log("val:");
-        console.log(s[keys[i]]);
-    }  
-}
+    function sortByGame(s) {
+
+        var count,
+            totalCount = parseInt(s["mlb_s_count"]),
+            keys = Object.keys(s),
+            keysByGame = [];
+
+        for (count = 0; count < totalCount; count += 1) {
+
+            (function () {
+
+                var game = { _id: count },
+                    match,
+                    kIndex = 0,
+                    key;
+
+                match = new RegExp("^mlb_s_(url|left|right)" + (count + 1).toString() + "(_|$)");
+
+                while (kIndex < keys.length) {
+                    key = keys[kIndex];
+                    if (key.search(match) > -1) {
+                        game[key] = s[key];
+                        keys.splice(kIndex, 1);
+                    } else {
+                        kIndex += 1;
+                    }
+                }
+                console.log(game);
+                keysByGame.push(game); // slice here to have a new array so to be able to ditch game
+                                               // this could also be solved by using a closure;
+            })()
+        }
+        return keysByGame;
+    }
+};

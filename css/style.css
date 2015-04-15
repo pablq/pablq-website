@@ -1,6 +1,6 @@
 body {
-    background-image: url("/img/background.png");
-    background-size: cover;
+    background-image: url("/img/wallsketchcube.gif");
+    background-size: 50%;
     text-align:center;
     padding-top: 150px;
     padding-bottom: 150px;
@@ -13,7 +13,7 @@ img {
 a {
     font-family: courier;
     text-decoration: none;
-    color: white;
+    color: yellow;
 }
 
 a:hover {
@@ -24,6 +24,11 @@ a:hover {
     color: white;
 }
 
-#vip {
+.game a {
+    font-family: ariel;
+    color: white;
+}
+
+#vip, #vip a {
     color: red;
 }

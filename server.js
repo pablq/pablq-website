@@ -16,7 +16,7 @@ var requestHandler = function (req, res) {
         
         if (req.url === "/") {
 
-            (function(){
+            (function() {
                 var options = {
                         hostname: "sports.espn.go.com",
                         path: "/mlb/bottomline/scores",

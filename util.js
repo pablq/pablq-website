@@ -74,6 +74,7 @@ module.exports = (function(){
         return game.headline.indexOf("Chicago Cubs") > 0;     
     }
     
+    //<div onclick="location.href='YOUR-URL-HERE';" style="cursor: pointer;"></div>
     function gameToHTML(game) {
         var gameString = "<div class='game'><h2>",
             i, len;
@@ -83,7 +84,7 @@ module.exports = (function(){
 
         gameString += game.headline + "</h2>";
         for (i = 0, len = game.lineCount; i < len; i += 1) {
-            gameString += "<p>" + game["p" + (i + 1)] + "</p></br>";
+            gameString += "<p>" + game["p" + (i + 1)] + "</p>";
         }
         gameString += "<a href=" + game.link + ">live</a></div>";
 

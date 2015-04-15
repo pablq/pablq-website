@@ -20,8 +20,11 @@ var http = require("http"),
             data += chunk;
         });
         res.on("end", function () {
-            var schedule = qs.parse(data, null, null, { decodeURIComponent: util.parseComponentFn });
-            console.log(util.sortFn(schedule));
+            var schedule = qs.parse(data, null, null, { decodeURIComponent: util.parseComponentFn }),
+                games = util.getGames(schedule),
+                html = util.getHTML(games);
+
+            console.log(html);
         });
     });
 

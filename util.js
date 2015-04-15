@@ -7,7 +7,7 @@ module.exports = (function(){
         return c;
     };
     
-    function sortFn (data) {
+    function getGames (data) {
 
         var count,
             totalCount = parseInt(data["mlb_s_count"]),
@@ -34,43 +34,83 @@ module.exports = (function(){
                         kIndex += 1;
                     }
                 }
-                games.push(toLines(game));
+                games.push(format(game));
             })()
         }
         return games;
     }
     
-    /* expected keys: {
-            _id: <id>
-            mlb_s_left<id>: <pregame: teams and time> or <ingame: teams, scores, and inning> or <postgame: final score>
-            mlb_s_right<id>_count: how many mlb_s_right<id>_n tags are there? number
-            mlb_s_right<id>_1: (only present when count > 0) <pregame: pitching matchup> <ingame: outs> <postgame: pitching scorers>
-            mlb_s_url<id>: url for live gamecast
-        }
+    
+    /*
+        expected key -> values:
+        - _id                 -> ID
+        - mlb_s_leftID        -> pregame: teams and time, ingame: teams, scores, and inning, postgame: final score>
+        - mlb_s_rightID_count -> how many mlb_s_right<id>_n tags are there? number
+        - mlb_s_rightID_1     -> (only present when count > 0) pregame: pitching matchup, ingame: outs, postgame: pitching scorers
+        - mlb_s_urlID         -> url for live gamecast
     */
 
-    function toLines(game) {
+    function format(game) {
 
-        var lines = {},
-            id = game._id;
+        var formatted = {},
+            id = game._id,
+            count = parseInt(game["mlb_s_right" + id + "_count"]),
+            i;
         
-        lines.headline = game["mlb_s_left" + id];
-        
-        var count = parseInt(game["mlb_s_right" + id + "_count"]);
-        for (var i = 0; i < count; i += 1) {
-            lines["p" + count] = game["mlb_s_right" + id + "_" + count];
+        for (i = 0; i < count; i += 1) {
+            formatted["p" + (i + 1)] = game["mlb_s_right" + id + "_" + (i + 1)];
         }
-        lines.link = game["mlb_s_url" + id];
-        return lines;
+        formatted.lineCount = count;
+        formatted.headline = game["mlb_s_left" + id];
+        formatted.link = game["mlb_s_url" + id];
+
+        return formatted;
     }
     
-    /*function writeGameFn(game) {
-        var keys = Object.keys(game),
-            
-            
-    }*/
+    function isSox(game) {
+        return game.headline.indexOf("Chicago Sox") > 0;     
+    }
+    function isCubs(game) {
+        return game.headline.indexOf("Chicago Cubs") > 0;     
+    }
+    
+    function gameToHTML(game) {
+        var gameString = "<div class='game'><h2>",
+            i, len;
+
+        if (isSox(game) || isCubs(game))
+            gameString = "<div class='game' id='vip'><h2>";
+
+        gameString += game.headline + "</h2>";
+        for (i = 0, len = game.lineCount; i < len; i += 1) {
+            gameString += "<p>" + game["p" + (i + 1)] + "</p></br>";
+        }
+        gameString += "<a href=" + game.link + ">live</a></div>";
+
+        return gameString;
+    }
+    
+    function getHTML(games) {
+        var i, len, 
+            html = "<html><head><title>Today's Games</title>" +
+                   "<link rel='stylesheet' type='text/css' href='/css/style.css'>" +
+                   "<meta name='description' content='Dynamically Generated'>" +
+                   "<meta name='author' content='pablq'>" +
+                   "<meta charset='UTF-8'></head>";
+        
+        for (i = 0, len = games.length; i < len; i += 1) {
+            html += gameToHTML(games[i]);
+        }
+        
+        html += "<br/><a href='https://github.com/pablq'>https://github.com/pablq</a>" +
+                "</body></html>";
+        
+        return html;
+    }
+
     return {
         parseComponentFn: parseComponentFn,
-        sortFn: sortFn
+        getGames: getGames,
+        getHTML: getHTML
     }
 })()

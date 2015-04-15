@@ -19,3 +19,11 @@ a {
 a:hover {
     color: red;
 }
+
+.game {
+    color: white;
+}
+
+#vip {
+    color: red;
+}

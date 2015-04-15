@@ -1,15 +1,15 @@
 var http = require("http"),
-    qs = require("querystring"),
-    options = {
-        hostname: "sports.espn.go.com",
-        path: "/mlb/bottomline/scores",
-        port: 80,
-        method: "GET"
-    };
+    qs = require("querystring");
 
-module.exports = function() {
+module.exports = (function() {
 
-    var req,
+    var options = {
+            hostname: "sports.espn.go.com",
+            path: "/mlb/bottomline/scores",
+            port: 80,
+            method: "GET"
+        },
+        req,
         result;
 
     req = http.request(options, function (res) {
@@ -20,6 +20,7 @@ module.exports = function() {
             data += chunk;
         });
         res.on("end", function () {
+            console.log("end");
             var schedule = qs.parse(data, null, null, { decodeURIComponent: decodeURIComponent });
             return sortByGame(schedule);
         });
@@ -66,11 +67,9 @@ module.exports = function() {
                         kIndex += 1;
                     }
                 }
-                console.log(game);
-                keysByGame.push(game); // slice here to have a new array so to be able to ditch game
-                                               // this could also be solved by using a closure;
+                keysByGame.push(game);
             })()
         }
         return keysByGame;
     }
-};
+})();

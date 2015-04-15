@@ -11,6 +11,7 @@ var http = require("http"),
 req = http.request(options, function (res) {
 
     var data = "";
+
     res.setEncoding("utf8");
     res.on("data", function (chunk) {
         data += chunk;
@@ -56,16 +57,14 @@ function sortByGame(s) {
             while (kIndex < keys.length) {
                 key = keys[kIndex];
                 if (key.search(match) > -1) {
-                    if (key.search("count") === -1)
-                        game[key] = s[key];
+                    game[key] = s[key];
                     keys.splice(kIndex, 1);
                 } else {
                     kIndex += 1;
                 }
             }
             console.log(game);
-            keysByGame.push(game); // slice here to have a new array so to be able to ditch game
-                                           // this could also be solved by using a closure;
+            keysByGame.push(game);
         })()
     }
     return keysByGame;

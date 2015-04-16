@@ -15,7 +15,8 @@ var requestHandler = function (req, res) {
     } else {
         
         if (req.url === "/") {
-
+        
+            // home url gets dynamic baseball html
             (function() {
                 var options = {
                         hostname: "sports.espn.go.com",
@@ -52,6 +53,7 @@ var requestHandler = function (req, res) {
 
         } else {
             
+            // otherwise, server just sends files. 
             (function(){
 
                 var filePath = "." + req.url;

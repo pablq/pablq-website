@@ -68,20 +68,24 @@ module.exports = (function(){
     }
     
     function isSox(game) {
-        return game.headline.indexOf("Chicago Sox") > 0;     
+        return game.headline.indexOf("Chicago Sox") > -1;     
     }
     function isCubs(game) {
-        return game.headline.indexOf("Chicago Cubs") > 0;     
+        return game.headline.indexOf("Chicago Cubs") > -1;     
     }
     
     //<div onclick="location.href='YOUR-URL-HERE';" style="cursor: pointer;"></div>
     function gameToHTML(game) {
         var gameString = "<div class='game'><h2>",
             i, len;
-
-        if (isSox(game) || isCubs(game))
-            gameString = "<div class='game' id='vip'><h2>";
-
+        
+        if (isSox(game) && isCubs(game))
+            gameString = "<div class='game' id='soxAndCubs'><h2>";
+        else if (isSox(game))
+            gameString = "<div class='game' id='sox'><h2>";
+        else if (isCubs(game))
+            gameString = "<div class='game' id='cubs'><h2>";
+    
         gameString += game.headline + "</h2>";
         for (i = 0, len = game.lineCount; i < len; i += 1) {
             gameString += "<p>" + game["p" + (i + 1)] + "</p>";

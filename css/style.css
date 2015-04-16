@@ -6,29 +6,25 @@ body {
     padding-bottom: 150px;
 }
 
-img {
-    margin-bottom: 100px;
-}
-
 a {
     font-family: courier;
     text-decoration: none;
-    color: yellow;
+    color: green;
 }
 
-a:hover {
-    color: red;
-}
-
-.game {
-    color: white;
-}
-
-.game a {
+.game, #game a {
     font-family: ariel;
     color: white;
 }
 
-#vip, #vip a {
+#sox, #sox a {
     color: red;
+}
+
+#cubs, #cubs a {
+    color: blue;
+}
+
+#soxAndCubs, #soxAndCubs a {
+    color: yellow;
 }

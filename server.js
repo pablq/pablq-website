@@ -15,9 +15,9 @@ var requestHandler = function (req, res) {
         var filePath;
 
         if (req.url === "/")
-            filePath = "./index.html";
+            filePath = "./frontend/index.html";
         else
-            filePath = "." + req.url;
+            filePath = "./frontend" + req.url;
 
         switch (path.extname(filePath)) {
             case ".gif":

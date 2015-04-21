@@ -1,47 +1,22 @@
-Currently just serving static files with a plain node.js backend.
+this application is in a state of flux.
 
-However... Muahahaha
+the server will now get routes. the routes will be /baseball /football /nhl and maybe /basketball.
 
-I have an idea to do something pretty fun.
+upon a 'GET' to each route the server will hit the appropriate espn endpoint i found and return the data in nice json objects.
 
-I'll hit this espn endpoint to get the current mlb status for games.
+for now i will not support any other methods.
 
-Using the data from that I'll generate an image.
+the front end will be a static html page with a small javascript file.
 
-When that image is done being generated I'll send a static html page that asks for it (along with CSS file)
+at moments not yet decided a user's click will trigger an http request to the servers endpoints and a section of the html will be populated and displayed with the data.
 
-If there is an error anywhere along the way, I'll just send a different static html page that asks for a pre-prepared image (maybe a random one of my gifs (ouch, though, that would be a lot of space). It's worth it for now.
+the details of the above are yet to be worked out.
 
-*** i'll leave the above because I'm a bit out of it.
+i am insistent on keeping the front end and server vanilla. i'm doing this as practice. i could do this way faster using express and jquery (or another front end lib)
 
-New Idea:
-
-keep the above... except... i also connect to a database.
-
-that database holds my "thoughts of the day"
-
-there is a special endpoint only i can hit that create's a thought and of course the day is recorded automatically.
-
-when the user visits my site they will be greeted with either:
-
-"""
-Pablo's thought of the day:
-
-<the thought here>
-
-click here for this month's thoughts
-
-click here for the current baseball scores
-"""
-
-of course, both of the 'click here' sections will open up to auto-genned html.
-
-the question is... do i want to do ajax calls from the javascript?
-
-the answer is yes. !!!BUT!!! i don't want to use jquery. sooooooooo.... the result is I MUST LEARN TO DO AJAX WITHOUT USING JQUERY.
-
-OR AT LEAST LEARN IT'S TOO MUCH OF A HASSLE TO EVER WANT TO DEAL WITH (then tuck tail and just use jquery)
-
-*** k that's it.
+other things to work out on the server side:
+- make sure server only sends files in a certain folder.
+- is the favicon being served?
+- keep logic clean!
 
 Pablo

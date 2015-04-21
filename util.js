@@ -7,10 +7,10 @@ module.exports = (function(){
         return c;
     };
     
-    function getGames (data) {
+    function getGames (data, league) {
 
         var count,
-            totalCount = parseInt(data["mlb_s_count"]),
+            totalCount = parseInt(data[league + "_s_count"]),
             keys = Object.keys(data),
             games = [];
 
@@ -23,7 +23,7 @@ module.exports = (function(){
                     kIndex = 0,
                     key;
 
-                match = new RegExp("^mlb_s_(url|left|right)" + (count + 1).toString() + "(_|$)");
+                match = new RegExp("^" + league + "_s_(url|left|right)" + (count + 1).toString() + "(_|$)");
 
                 while (kIndex < keys.length) {
                     key = keys[kIndex];
@@ -34,7 +34,7 @@ module.exports = (function(){
                         kIndex += 1;
                     }
                 }
-                games.push(format(game));
+                games.push(format(game,league));
             })()
         }
         return games;
@@ -50,19 +50,19 @@ module.exports = (function(){
         - mlb_s_urlID         -> url for live gamecast
     */
 
-    function format(game) {
+    function format(game,league) {
 
         var formatted = {},
             id = game._id,
-            count = parseInt(game["mlb_s_right" + id + "_count"]),
+            count = parseInt(game[league + "_s_right" + id + "_count"]),
             i;
         
         for (i = 0; i < count; i += 1) {
-            formatted["p" + (i + 1)] = game["mlb_s_right" + id + "_" + (i + 1)];
+            formatted["p" + (i + 1)] = game[league+ "_s_right" + id + "_" + (i + 1)];
         }
         formatted.lineCount = count;
-        formatted.headline = game["mlb_s_left" + id];
-        formatted.link = game["mlb_s_url" + id];
+        formatted.headline = game[league+"_s_left" + id];
+        formatted.link = game[league+"_s_url" + id];
 
         return formatted;
     }

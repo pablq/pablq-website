@@ -1,6 +1,7 @@
 var http = require("http"),
     path = require("path"),
     fs = require("fs"),
+    routes = require("./routes"),
     port = Number(process.env.PORT || 5000);
 
 var requestHandler = function (req, res) {
@@ -11,13 +12,23 @@ var requestHandler = function (req, res) {
         res.end("CANNOT " + req.method + "\n");
 
     } else {
+        
+        switch (req.url) {
+            case "/mlb":
+                  
+            case "/nfl":
+            case "/nfl":
+            case "/nba";
+            default:
+        }
 
-        var filePath;
+        var filePath,
+            _dir = "./frontend";
 
         if (req.url === "/")
-            filePath = "./frontend/index.html";
+            filePath = _dir + "/index.html";
         else
-            filePath = "./frontend" + req.url;
+            filePath = _dir + req.url;
 
         switch (path.extname(filePath)) {
             case ".gif":
@@ -69,5 +80,7 @@ var requestHandler = function (req, res) {
         });
     }
 }
+
+var router = function (req, res
 
 http.createServer(requestHandler).listen(port);

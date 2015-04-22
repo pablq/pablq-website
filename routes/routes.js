@@ -4,18 +4,29 @@ var http = require("http"),
 (function () {
 
     var routes = {
-        mlb: function (res) {
-            var data = requestFromESPN("mlb", function(err, games) {
-                if (err) {
-                    res.writeHead(500, { "Content-Type" : "text/plain" });
-                    res.end("SERVER ERROR\n");
-                } else {
-                    res.writeHead(200, { "Content-Type" : "text/json" });
-                    res.end(JSON.stringify(games));
-                }
-            });
+
+        mlb: function (req, res) {
+
+            var data;
+            if (req.method !== "GET") {
+
+                res.writeHead(501, { "Content-Type" : "text/plain" });
+                res.end("CANNOT " + req.method + "\n");
+
+            } else {
+
+                data = requestFromESPN("mlb", function(err, games) {
+                    if (err) {
+                        res.writeHead(500, { "Content-Type" : "text/plain" });
+                        res.end("SERVER ERROR\n");
+                    } else {
+                        res.writeHead(200, { "Content-Type" : "text/json" });
+                        res.end(JSON.stringify(games));
+                    }
+                });
+            }
         },
-        nhl: function (res) {
+        nhl: function (req, res) {
             var data = requestFromESPN("nhl", function (err, games) {
                 if (err) {     
                     res.writeHead(500, { "Content-Type" : "text/plain" });
@@ -46,11 +57,11 @@ var http = require("http"),
                     res.writeHead(200, { "Content-Type" : "text/json" });
                     res.end(JSON.stringify(games));
                 }
-            })
+            });
         }
     }    
 
-    function requestFromESPN(league,cb) {
+    function requestFromESPN (league, cb) {
             
         var path = "/bottomline/scores",
             options = {
@@ -61,21 +72,21 @@ var http = require("http"),
             },
             gameReq;
 
-        gameReq = http.request(options, function (gameRes) {
+        gameReq = http.request(options, (gameRes) => {
 
             var data = "";
             gameRes.setEncoding("utf8");
             gameRes.on("data", (chunk) => {
                 data += chunk;
             });
-            gameRes.on("end", function () {
+            gameRes.on("end", () => {
                 var games = getGames(qs.parse(data), league);
                 cb(null, games);
             });
         });
 
-        gameReq.on("error", function (e) {
-            cb("failed request to ESPN");
+        gameReq.on("error", (error) => {
+            cb(error);
         });
 
         gameReq.end();

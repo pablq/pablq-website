@@ -1,5 +1,5 @@
-var handleStatic = require("./default"),
-    handleSports = require("./sports");
+var getStatic = require("./getStatic"),
+    getSports = require("./getSports");
 
 module.exports = function (req, res) {
     
@@ -15,12 +15,12 @@ module.exports = function (req, res) {
         path = req.url.match(/\w+/g);
 
         if (path && path[0] === "sports") {
-
-            handleSports(path[1], req, res);
+        
+            getSports(path[1], req, res);
 
         } else {
 
-            handleStatic(req, res);
+            getStatic(req, res);
         }
     }
 }

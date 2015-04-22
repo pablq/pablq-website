@@ -9,3 +9,11 @@ body {
 a {
     text-decoration: none;
 }
+
+#baseball_container, #hockey_container, #football_container, #basketball_container {
+    color: red
+}
+
+.hidden {
+    display: none;
+}

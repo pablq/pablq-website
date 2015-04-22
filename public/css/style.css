@@ -12,15 +12,64 @@ a {
 }
 
 button {
-
+    background-image:url('/img/background.png');
     display: inline-block;
-
     width:90%;
     height:19%;
     margin-top:5%;
-    
     -webkit-border-radius: 10px;
-    
+    -webkit-transition: -webkit-box-shadow .1s ease-in-out;
+} 
+
+button:active {
+    -webkit-transform: translate(0, 5px); /* depth of button press */
+}
+
+button.hawks {
+    -webkit-box-shadow: 
+        0px 2px #C8102E,
+        0px 3px #FFFFFF,
+        0px 4px #2C2A29, 
+        0px 5px #FFFFFF,
+        0px 7px #C8102E,
+        0px 10px 4px rgba(175,175,175,1); /* shadow */
+}
+
+button.hawks:active {
+    -webkit-box-shadow: 
+        0px 2px #2C2A29, 
+        0px 3px #FFFFFF,
+        0px 4px #C8102E,
+        0px 5px #FFFFFF,
+        0px 7px #2C2A29, 
+        0px 9px 3px rgba(175,175,175,.6); /* shadow */
+}
+
+button.bears {
+    -webkit-box-shadow: 
+        0px 1px #03202F,
+        0px 2px #DD4814, 
+        0px 3px #03202F,
+        0px 4px #DD4814, 
+        0px 5px #03202F,
+        0px 6px #DD4814, 
+        0px 7px #03202F,
+        0px 10px 4px rgba(175,175,175,1); /* shadow */
+}
+
+button.bears:active {
+    -webkit-box-shadow: 
+        0px 1px #FFFFFF,
+        0px 2px #03202F,
+        0px 3px #FFFFFF,
+        0px 4px #DD4814, 
+        0px 5px #FFFFFF,
+        0px 6px #03202F,
+        0px 7px #FFFFFF,
+        0px 10px 4px rgba(175,175,175,1); /* shadow */
+}
+
+button.bulls {
     -webkit-box-shadow: 
         0px 1px #DE1F1F,
         0px 2px #ED6300,
@@ -29,9 +78,33 @@ button {
         0px 5px #0767B5,
         0px 6px #4107B5,
         0px 10px 4px rgba(175,175,175,1); /* shadow */
-    
-    -webkit-transition: -webkit-box-shadow .1s ease-in-out;
-} 
+}
+
+button.sox {
+
+    border-color: black;
+    -webkit-box-shadow: 
+        0px 1px #000000,
+        0px 2px #FFFFFF,
+        0px 3px #000000,
+        0px 4px #FFFFFF,
+        0px 5px #000000,
+        0px 6px #FFFFFF,
+        0px 7px #000000,
+        0px 10px 4px rgba(175,175,175,1); /* shadow */
+}
+
+button.sox:active {
+    -webkit-box-shadow: 
+        0px 1px #000000,
+        0px 2px #C0C0C0,
+        0px 3px #000000,
+        0px 4px #C0C0C0,
+        0px 5px #000000,
+        0px 6px #C0C0C0,
+        0px 7px #000000,
+        0px 10px 4px rgba(175,175,175,1); /* shadow */
+}
 
 button:hover {
     color: red;
@@ -39,16 +112,3 @@ button:hover {
     cursor: pointer;
 }
 
-button:active {
-
-    -webkit-box-shadow: 
-        0px 1px #DE1F1F,
-        0px 2px #E37B0B,
-        0px 3px #E3D800,
-        0px 4px #2CB307,
-        0px 5px #0767B5,
-        0px 6px #4107B5,
-        0px 9px 3px rgba(175,175,175,.6); /* shadow */
-
-    -webkit-transform: translate(0, 5px); /* depth of button press */
-}

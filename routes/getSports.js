@@ -1,25 +1,28 @@
 var http = require("http"),
     qs = require("querystring");
 
-module.exports = (sport, req, res) => {
+module.exports = (league, req, res) => {
     
-    var legalSports = [ "mlb", "nba", "nfl", "nhl" ];
+    var leagues = [ "mlb", "nba", "nfl", "nhl" ];
     
-    if (legalSports.indexOf(sport) === -1) {
+    if (leagues.indexOf(league) === -1) {
 
         res.writeHead(501, { "Content-Type" : "text/plain" });
-        res.end("CANNOT GET " + sport);
+        res.end("CANNOT GET " + league);
 
     } else {
 
-        requestFromESPN(sport, (err, games) => {
+        requestFromESPN(league, (err, data) => {
 
             if (err) {
+
                 res.writeHead(500, { "Content-Type" : "text/plain" });
                 res.end("SERVER ERROR\n");
+
             } else {
+
                 res.writeHead(200, { "Content-Type" : "text/json" });
-                res.end(JSON.stringify(games));
+                res.end(JSON.stringify(data));
             }
         });
     }
@@ -42,8 +45,7 @@ function requestFromESPN (league, cb) {
             data += chunk;
         });
         gameRes.on("end", () => {
-            var games = getGames(qs.parse(data), league);
-            cb(null, games);
+            cb(null, getGames(qs.parse(data), league));
         });
     });
 
@@ -66,11 +68,9 @@ function getGames (data, league) {
         (() => {
 
             var game = { _id: count + 1 },
-                match,
+                match = new RegExp("^" + league + "_s_(url|left|right)" + (count + 1).toString() + "(_|$)"),
                 kIndex = 0,
                 key;
-
-            match = new RegExp("^" + league + "_s_(url|left|right)" + (count + 1).toString() + "(_|$)");
 
             while (kIndex < keys.length) {
                 key = keys[kIndex];
@@ -81,7 +81,6 @@ function getGames (data, league) {
                     kIndex += 1;
                 }
             }
-
             games.push(formatGame(game,league));
 
         })()

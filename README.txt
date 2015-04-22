@@ -1,22 +1,22 @@
 this application is in a state of flux.
 
-the server will now get routes. the routes will be /baseball /football /nhl and maybe /basketball.
+the server uses ECMAScript 6 so it should be run with the --harmony flag
 
-upon a 'GET' to each route the server will hit the appropriate espn endpoint i found and return the data in nice json objects.
+next up: resolve front end.
+1. create functionality to update data without leaving page.
+2. what happens if the server sends shitty data??? protect against this.
+3. figure out how you want the layout to be.
+    > mobile first!
+    > simple but stylish.
+    > do try to work a small animation in there!
 
-for now i will not support any other methods.
+i am insistent on keeping the front end and server vanilla for this iteration. 
+i'm doing this to learn the dom and get a better sense for what kinds of things are being done for me behind the scenes with various frameworks.
 
-the front end will be a static html page with a small javascript file.
-
-at moments not yet decided a user's click will trigger an http request to the servers endpoints and a section of the html will be populated and displayed with the data.
-
-the details of the above are yet to be worked out.
-
-i am insistent on keeping the front end and server vanilla. i'm doing this as practice. i could do this way faster using express and jquery (or another front end lib)
-
-other things to work out on the server side:
-- make sure server only sends files in a certain folder.
+things to work out yet on the server side:
+- i'm still getting messed up symbols in baseball (for out counts). -> i need a robust solution
 - is the favicon being served?
-- keep logic clean!
+- think about the routes... something about the way you're doing it doesn't feel clean. think about a better way to do the routing.
+    ^ ask someone about how to do it.
 
 Pablo

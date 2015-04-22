@@ -15,72 +15,77 @@ var requestHandler = function (req, res) {
         
         switch (req.url) {
             case "/mlb":
-                  
+                routes.mlb(res);      
+                break;
+            case "/nhl":
+                routes.nhl(res);      
+                break;
             case "/nfl":
-            case "/nfl":
-            case "/nba";
-            default:
-        }
-
-        var filePath,
-            _dir = "./frontend";
-
-        if (req.url === "/")
-            filePath = _dir + "/index.html";
-        else
-            filePath = _dir + req.url;
-
-        switch (path.extname(filePath)) {
-            case ".gif":
-                contentType = "image/gif";
+                routes.nfl(res);      
                 break;
-            case ".png":
-                contentType = "image/png";
-                break;
-            case ".js":
-                contentType = "text/javascript";
-                break;
-            case ".css":
-                contentType = "text/css";
-                break;
-            case ".txt":
-                contentType = "text/plain";
-                break;
-            case ".pdf":
-                contentType = "application/pdf";
+            case "/nba":
+                routes.nba(res);      
                 break;
             default:
-                contentType = "text/html";
-        }
 
-        fs.exists(filePath, function(exists) {
-            
-            if (exists) {
+                var filePath,
+                    _dir = "./frontend";
 
-                fs.readFile(filePath, function(err, content) {
+                if (req.url === "/")
+                    filePath = _dir + "/index.html";
+                else
+                    filePath = _dir + req.url;
+
+                switch (path.extname(filePath)) {
+                    case ".gif":
+                        contentType = "image/gif";
+                        break;
+                    case ".png":
+                        contentType = "image/png";
+                        break;
+                    case ".js":
+                        contentType = "text/javascript";
+                        break;
+                    case ".css":
+                        contentType = "text/css";
+                        break;
+                    case ".txt":
+                        contentType = "text/plain";
+                        break;
+                    case ".pdf":
+                        contentType = "application/pdf";
+                        break;
+                    default:
+                        contentType = "text/html";
+                }
+
+                fs.exists(filePath, function(exists) {
                     
-                    if (err) {
-                        
-                        res.writeHead(500, { "Content-Type" : "text/plain" });
-                        res.end("SERVER ERROR\n");
+                    if (exists) {
+
+                        fs.readFile(filePath, function(err, content) {
+                            
+                            if (err) {
+                                
+                                res.writeHead(500, { "Content-Type" : "text/plain" });
+                                res.end("SERVER ERROR\n");
+
+                            } else {
+
+                                console.log("Serving:", filePath.replace("./",""));
+                                res.writeHead(200, { "Content-Type" : contentType });
+                                res.end(content);
+                            }
+                        });
 
                     } else {
 
-                        console.log("Serving:", filePath.replace("./",""));
-                        res.writeHead(200, { "Content-Type" : contentType });
-                        res.end(content);
+                        res.writeHead(404, { "Content-Type" : "text/plain" });
+                        res.end("FILE NOT FOUND\n");
                     }
                 });
-
-            } else {
-
-                res.writeHead(404, { "Content-Type" : "text/plain" });
-                res.end("FILE NOT FOUND\n");
-            }
-        });
+        }
     }
 }
-
-var router = function (req, res
 
 http.createServer(requestHandler).listen(port);

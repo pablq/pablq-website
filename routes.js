@@ -3,19 +3,54 @@ var http = require("http"),
 
 (function () {
 
-    var paths = [ "/mlb/bottomline/scores", "/nfl/bottomline/scores", "/nba/bottomline/scores","/nhl/bottomline/scores" ];
-    
     var routes = {
         mlb: function (res) {
-            var data = requestFromESPN("mlb");
-            if (data 
+            var data = requestFromESPN("mlb", function(err, games) {
+                if (err) {
+                    res.writeHead(500, { "Content-Type" : "text/plain" });
+                    res.end("SERVER ERROR\n");
+                } else {
+                    res.writeHead(200, { "Content-Type" : "text/json" });
+                    res.end(JSON.stringify(games));
+                }
+            });
+        },
+        nhl: function (res) {
+            var data = requestFromESPN("nhl", function (err, games) {
+                if (err) {     
+                    res.writeHead(500, { "Content-Type" : "text/plain" });
+                    res.end("SERVER ERROR\n");
+                } else {
+                    res.writeHead(200, { "Content-Type" : "text/json" });
+                    res.end(JSON.stringify(games));
+                }
+            });
+        },
+        nfl: function (res) {
+            var data = requestFromESPN("nfl", function (err, games) {
+                if (err) {
+                    res.writeHead(500, { "Content-Type" : "text/plain" });
+                    res.end("SERVER ERROR\n");
+                } else {
+                    res.writeHead(200, { "Content-Type" : "text/json" });
+                    res.end(JSON.stringify(games));
+                }
+            });
+        },
+        nba: function (res) {
+            var data = requestFromESPN("nba", function (err, games) {
+                if (err) {
+                    res.writeHead(500, { "Content-Type" : "text/plain" });
+                    res.end("SERVER ERROR\n");
+                } else {
+                    res.writeHead(200, { "Content-Type" : "text/json" });
+                    res.end(JSON.stringify(games));
+                }
+            })
         }
-        nhl: handleNHL,
-        nba: handleNBA,
-        nfl: handleNFL
     }    
 
-    function requestFromESPN(league) {
+    function requestFromESPN(league,cb) {
             
         var path = "/bottomline/scores",
             options = {
@@ -30,16 +65,17 @@ var http = require("http"),
 
             var data = "";
             gameRes.setEncoding("utf8");
-            gameRes.on("data", function (chunk) {
+            gameRes.on("data", (chunk) => {
                 data += chunk;
             });
             gameRes.on("end", function () {
-                return getGames(qs.parse(data), league);
+                var games = getGames(qs.parse(data), league);
+                cb(null, games);
             });
         });
 
         gameReq.on("error", function (e) {
-           return null;
+            cb("failed request to ESPN");
         });
 
         gameReq.end();
@@ -95,4 +131,5 @@ var http = require("http"),
         return formatted;
     }
 
+    module.exports = routes;
 })()

@@ -13,6 +13,7 @@ module.exports = (sport, req, res) => {
     } else {
 
         requestFromESPN(sport, (err, games) => {
+
             if (err) {
                 res.writeHead(500, { "Content-Type" : "text/plain" });
                 res.end("SERVER ERROR\n");
@@ -88,7 +89,7 @@ function getGames (data, league) {
     return games;
 }
 
-function formatGame(game,league) {
+function formatGame(game, league) {
 
     var formatted = {},
         id = game._id,
@@ -96,12 +97,12 @@ function formatGame(game,league) {
         i;
     
     for (i = 0; i < count; i += 1) {
-        formatted["p" + (i + 1)] = game[league+ "_s_right" + id + "_" + (i + 1)];
+        formatted["p" + (i + 1)] = game[league + "_s_right" + id + "_" + (i + 1)];
     }
 
     formatted.lineCount = count;
-    formatted.headline = game[league+"_s_left" + id];
-    formatted.link = game[league+"_s_url" + id];
+    formatted.headline = game[league + "_s_left" + id];
+    formatted.link = game[league + "_s_url" + id];
 
     return formatted;
 }

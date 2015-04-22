@@ -1,7 +1,7 @@
 var getStatic = require("./getStatic"),
     getSports = require("./getSports");
 
-module.exports = function (req, res) {
+module.exports = (req, res) => {
     
     var path;
 

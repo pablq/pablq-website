@@ -4,8 +4,6 @@ var http = require("http"),
 
 module.exports = (req, res) => {
 
-    console.log("req.url:", req.url);
-
     var filePath,
         _dir = "./public",
         getContentType = (filePath) => {

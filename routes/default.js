@@ -2,11 +2,11 @@ var http = require("http"),
     path = require("path"),
     fs = require("fs");
 
-module.exports = function (req, res) {
+module.exports = (req, res) => {
 
     var filePath,
         _dir = "./frontend",
-        getContentType = function (filePath) {
+        getContentType = (filePath) => {
             var extentions = {
                     gif : "image/gif",
                     png : "image/gif",
@@ -25,11 +25,11 @@ module.exports = function (req, res) {
     else
         filePath = _dir + req.url;
 
-    fs.exists(filePath, function(exists) {
+    fs.exists(filePath, (exists) => {
         
         if (exists) {
 
-            fs.readFile(filePath, function(err, content) {
+            fs.readFile(filePath, (err, content) => {
                 
                 if (err) {
                     

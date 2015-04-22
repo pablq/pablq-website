@@ -1,10 +1,10 @@
-var url = require("url"), 
-    def = require("./default"),
+var def = require("./default"),
     sports = require("./sports");
 
 module.exports = function (req, res) {
-        
-    var url; 
+    
+    var path;
+
     if (req.method !== "GET") {
 
         res.writeHead(501, { "Content-Type" : "text/plain" });
@@ -12,7 +12,15 @@ module.exports = function (req, res) {
 
     } else {
 
-        url = url.parse(req.url); 
-        console.log(url);
+        path = req.url.match(/\w+/g);
+
+        if (path[0] == "sports") {
+
+            sports(path[1], req, res);
+
+        } else {
+
+            def(req, res);
+        }
     }
 }

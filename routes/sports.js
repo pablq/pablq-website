@@ -1,17 +1,33 @@
 var http = require("http"),
     qs = require("querystring");
 
-module.exports = (sport, req, res) {
+module.exports = (sport, req, res) => {
+    
+    var legalSports = [ "mlb", "nba", "nfl", "nhl" ];
+    
+    if (legalSports.indexOf(sport) === -1) {
 
-    requestFromESPN("mlb", function(err, games) {
-        if (err) {
-            res.writeHead(500, { "Content-Type" : "text/plain" });
-            res.end("SERVER ERROR\n");
-        } else {
-            res.writeHead(200, { "Content-Type" : "text/json" });
-            res.end(JSON.stringify(games));
-        }
-    });
+        res.writeHead(501, { "Content-Type" : "text/plain" });
+        res.end("CANNOT GET " + sport);
+
+    } else {
+
+        requestFromESPN(sport, (err, games) => {
+
+            if (err) {
+
+                res.writeHead(500, { "Content-Type" : "text/plain" });
+                res.end("SERVER ERROR\n");
+
+            } else {
+
+                res.writeHead(200, { "Content-Type" : "text/json" });
+                res.end(JSON.stringify(games));
+            }
+        });
+
+    }
+
 }
 
 function requestFromESPN (league, cb) {
@@ -22,13 +38,12 @@ function requestFromESPN (league, cb) {
             path: "/" + league + path,
             port: 80,
             method: "GET"
-        },
-        gameReq;
+        };
 
-    gameReq = http.request(options, (gameRes) => {
+    var gameReq = http.request(options, (gameRes) => {
 
         var data = "";
-        gameRes.setEncoding("utf8");
+        //gameRes.setEncoding("utf8");
         gameRes.on("data", (chunk) => {
             data += chunk;
         });
@@ -54,7 +69,7 @@ function getGames (data, league) {
 
     for (count = 0; count < totalCount; count += 1) {
 
-        (function () {
+        (() => {
 
             var game = { _id: count + 1 },
                 match,
@@ -72,7 +87,9 @@ function getGames (data, league) {
                     kIndex += 1;
                 }
             }
+
             games.push(formatGame(game,league));
+
         })()
     }
     return games;
@@ -88,6 +105,7 @@ function formatGame(game,league) {
     for (i = 0; i < count; i += 1) {
         formatted["p" + (i + 1)] = game[league+ "_s_right" + id + "_" + (i + 1)];
     }
+
     formatted.lineCount = count;
     formatted.headline = game[league+"_s_left" + id];
     formatted.link = game[league+"_s_url" + id];

@@ -1,26 +1,23 @@
 {
-  "name": "threejs_node_test",
+  "name": "pablq-org",
   "version": "0.0.0",
   "description": "pablq.org",
   "main": "server.js",
   "scripts": {
-    "test": "node server.js",
-    "start": "node server.js"
+    "test": "node --harmony server.js",
+    "start": "node --harmony server.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/pablq/dumbfloatingcubes.git"
+    "url": "https://github.com/pablq/pablq-org.git"
   },
   "keywords": [
     "pablq"
   ],
   "author": "pablq",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/pablq/dumbfloatingcubes/issues"
-  },
-  "homepage": "https://github.com/pablq/dumbfloatingcubes",
+  "homepage": "http://pablq.org",
   "engines": {
-    "node": "v0.10.26"
+    "node": "v0.12.2"
   }
 }

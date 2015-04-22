@@ -13,29 +13,22 @@ module.exports = (sport, req, res) => {
     } else {
 
         requestFromESPN(sport, (err, games) => {
-
             if (err) {
-
                 res.writeHead(500, { "Content-Type" : "text/plain" });
                 res.end("SERVER ERROR\n");
-
             } else {
-
                 res.writeHead(200, { "Content-Type" : "text/json" });
                 res.end(JSON.stringify(games));
             }
         });
-
     }
-
 }
 
 function requestFromESPN (league, cb) {
         
-    var path = "/bottomline/scores",
-        options = {
+    var options = {
             hostname: "sports.espn.go.com",
-            path: "/" + league + path,
+            path: "/" + league + "/bottomline/scores",
             port: 80,
             method: "GET"
         };
@@ -43,7 +36,7 @@ function requestFromESPN (league, cb) {
     var gameReq = http.request(options, (gameRes) => {
 
         var data = "";
-        //gameRes.setEncoding("utf8");
+        gameRes.setEncoding("utf8");
         gameRes.on("data", (chunk) => {
             data += chunk;
         });

@@ -4,10 +4,12 @@ var http = require("http"),
 
 module.exports = (req, res) => {
 
+    console.log("req.url:", req.url);
+
     var filePath,
-        _dir = "./frontend",
+        _dir = "./public",
         getContentType = (filePath) => {
-            var extentions = {
+            var types = {
                     gif : "image/gif",
                     png : "image/gif",
                     js  : "text/javascript",
@@ -17,7 +19,7 @@ module.exports = (req, res) => {
                 },
                 ext = path.extname(filePath).replace(".","");
             
-            return exts[ext] ? exts[ext] : "unknown";
+            return types[ext] ? types[ext] : "unknown";
         };
 
     if (req.url === "/")

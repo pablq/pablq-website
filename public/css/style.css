@@ -1,11 +1,54 @@
 body {
-    background-image: url("/img/wallsketchcube.gif");
-    background-size: 50%;
-    text-align:center;
-    padding: 150px;
-    padding: 150px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: black;
+    background-image: url("/img/newGif.gif"), url("/img/background.png");
+    background-size: contain;
 }
 
 a {
     text-decoration: none;
+}
+
+button {
+
+    display: inline-block;
+
+    width:90%;
+    height:19%;
+    margin-top:5%;
+    
+    -webkit-border-radius: 10px;
+    
+    -webkit-box-shadow: 
+        0px 1px #DE1F1F,
+        0px 2px #ED6300,
+        0px 3px #E3D800,
+        0px 4px #2CB307,
+        0px 5px #0767B5,
+        0px 6px #4107B5,
+        0px 10px 4px rgba(175,175,175,1); /* shadow */
+    
+    -webkit-transition: -webkit-box-shadow .1s ease-in-out;
+} 
+
+button:hover {
+    color: red;
+    text-shadow: 0px 1px white;
+    cursor: pointer;
+}
+
+button:active {
+
+    -webkit-box-shadow: 
+        0px 1px #DE1F1F,
+        0px 2px #E37B0B,
+        0px 3px #E3D800,
+        0px 4px #2CB307,
+        0px 5px #0767B5,
+        0px 6px #4107B5,
+        0px 9px 3px rgba(175,175,175,.6); /* shadow */
+
+    -webkit-transform: translate(0, 5px); /* depth of button press */
 }

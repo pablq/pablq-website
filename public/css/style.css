@@ -1,10 +1,15 @@
 body {
     margin: 0;
     padding: 0;
+
     text-align: center;
     background-color: gray;
-    background-image: url("/img/background_images/1.jpg");
-    background-size: contain;
+    /* yikes... gradients... */
+
+    background: -webkit-linear-gradient(left top, red , blue); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, red, blue); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, red, blue); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, red , blue); /* Standard syntax */
 }
 
 a {
@@ -21,14 +26,20 @@ button {
     height:19%;
     margin-top:5%;
     -webkit-border-radius: 10px;
+    -webkit-transition: -webkit-transform .2s ease-in-out,
+                        -webkit-box-shadow .1s ease-in-out;
+
+    font-family: Courier;
+    font-size: 50px;
+    /*text-transform: uppercase;*/
 } 
 
 button:active {
-    -webkit-transform: translate(0, 2px); /* depth of button press */
+    -webkit-transform: translate(0, 5px); /* depth of button press */
 }
 
 button:hover {
-    color: red;
+    font-weight: bold;
     text-shadow: 0px 1px white;
     cursor: pointer;
 }
@@ -42,18 +53,14 @@ button.hawks {
         0px 4px #2C2A29, 
         0px 5px #FFFFFF,
         0px 7px #C8102E,
-        3px 8px 5px black,
-        -3px 8px 5px black;
+        1px 9px 5px rgba(0,0,0,1),
+        -1px 9px 5px rgba(0,0,0,1);
 }
 
 button.hawks:active {
     -webkit-box-shadow: 
         0px 2px #C8102E,
-        0px 3px #FFFFFF,
-        0px 4px #2C2A29, 
-        0px 5px #FFFFFF,
-        2px 7px 5px black,
-        -2px 7px 5px black;
+        0px 4px 4px black;
 }
 
 button.bears {
@@ -66,19 +73,15 @@ button.bears {
         0px 5px #03202F,
         0px 6px #DD4814, 
         0px 7px #03202F,
-        3px 8px 5px black,
-        -3px 8px 5px black;
+        1px 8px 5px black,
+        -1px 8px 5px black;
 }
 
 button.bears:active {
     -webkit-box-shadow: 
         0px 1px #03202F,
         0px 2px #DD4814, 
-        0px 3px #03202F,
-        0px 4px #DD4814, 
-        0px 5px #03202F,
-        2px 7px 5px black,
-        -2px 7px 5px black;
+        0px 4px 4px black;
 }
 
 button.soxcubs {
@@ -91,19 +94,15 @@ button.soxcubs {
         0px 5px #000000,
         0px 6px #FFFFFF,
         0px 7px #000000,
-        3px 8px 5px black,
-        -3px 8px 5px black;
+        1px 8px 5px black,
+        -1px 8px 5px black;
 }
 
 button.soxcubs:active {
     -webkit-box-shadow: 
         0px 1px #000000,
         0px 2px #FFFFFF,
-        0px 3px #000000,
-        0px 4px #FFFFFF,
-        0px 5px #000000,
-        2px 7px 5px black,
-        -2px 7px 5px black;
+        0px 4px 4px black;
 }
 
 button.bulls {
@@ -114,21 +113,31 @@ button.bulls {
         0px 4px #D4001F,
         0px 6px #000000,
         0px 7px #FFFFFF,
-        3px 8px 5px black,
-        -3px 8px 5px black;
+        1px 8px 5px black,
+        -1px 8px 5px black;
 }
 
 button.bulls:active {
     -webkit-box-shadow: 
         0px 1px #FFFFFF,
-        0px 3px #000000,
-        0px 4px #D4001F,
-        0px 5px #000000,
-        2px 7px 5px black,
-        -2px 7px 5px black;
+        0px 2px #000000,
+        0px 4px 4px black;
 }
 
 #mlb_container, #nhl_container, #nfl_container, #nba_container {
-    /*background-image: url("/img/background_images/1.jpg");
-    background-size: contain;*/
+
+    display: inline-block;
+
+
+    width: 90%;
+    max-width: 600px;
+    color: white;
+    background-image: url("/img/background_images/2.jpg");
+    background-size: cover;
 }
+
+#mlb_container div, #nhl_container div, #nfl_container div, #nba_container div {
+    text-align: left;
+}
+
+

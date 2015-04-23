@@ -2,8 +2,8 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
-    background-color: black;
-    background-image: url("/img/newGif.gif"), url("/img/background.png");
+    background-color: gray;
+    background-image: url("/img/background_images/1.jpg");
     background-size: contain;
 }
 
@@ -13,18 +13,18 @@ a {
 
 button {
     border: none;
-    background-image:url('/img/background.png');
+    background-color: gray;
+    background-size: 100% 100%;
     display: inline-block;
-    max-width: 750px;
+    max-width: 600px;
     width:90%;
     height:19%;
     margin-top:5%;
     -webkit-border-radius: 10px;
-    -webkit-transition: -webkit-box-shadow .1s ease-in-out;
 } 
 
 button:active {
-    -webkit-transform: translate(0, 5px); /* depth of button press */
+    -webkit-transform: translate(0, 2px); /* depth of button press */
 }
 
 button:hover {
@@ -35,26 +35,29 @@ button:hover {
 
 
 button.hawks {
+    background-image: url("/img/button_images/4.jpg");
     -webkit-box-shadow: 
         0px 2px #C8102E,
         0px 3px #FFFFFF,
         0px 4px #2C2A29, 
         0px 5px #FFFFFF,
         0px 7px #C8102E,
-        0px 10px 4px rgba(175,175,175,1); /* shadow */
+        3px 8px 5px black,
+        -3px 8px 5px black;
 }
 
 button.hawks:active {
     -webkit-box-shadow: 
-        0px 2px #2C2A29, 
+        0px 2px #C8102E,
         0px 3px #FFFFFF,
-        0px 4px #C8102E,
+        0px 4px #2C2A29, 
         0px 5px #FFFFFF,
-        0px 7px #2C2A29, 
-        0px 8px 2px rgba(175,175,175,.6); /* shadow */
+        2px 7px 5px black,
+        -2px 7px 5px black;
 }
 
 button.bears {
+    background-image: url("/img/button_images/5.jpg");
     -webkit-box-shadow: 
         0px 1px #03202F,
         0px 2px #DD4814, 
@@ -63,22 +66,23 @@ button.bears {
         0px 5px #03202F,
         0px 6px #DD4814, 
         0px 7px #03202F,
-        0px 10px 4px rgba(175,175,175,1); /* shadow */
+        3px 8px 5px black,
+        -3px 8px 5px black;
 }
 
 button.bears:active {
     -webkit-box-shadow: 
-        0px 1px #FFFFFF,
-        0px 2px #03202F,
-        0px 3px #FFFFFF,
+        0px 1px #03202F,
+        0px 2px #DD4814, 
+        0px 3px #03202F,
         0px 4px #DD4814, 
-        0px 5px #FFFFFF,
-        0px 6px #03202F,
-        0px 7px #FFFFFF,
-        0px 8px 2px rgba(175,175,175,.6); /* shadow */
+        0px 5px #03202F,
+        2px 7px 5px black,
+        -2px 7px 5px black;
 }
 
 button.soxcubs {
+    background-image: url("/img/button_images/7.jpg");
     -webkit-box-shadow: 
         0px 1px #000000,
         0px 2px #FFFFFF,
@@ -87,35 +91,44 @@ button.soxcubs {
         0px 5px #000000,
         0px 6px #FFFFFF,
         0px 7px #000000,
-        0px 10px 4px rgba(175,175,175,1); /* shadow */
+        3px 8px 5px black,
+        -3px 8px 5px black;
 }
 
 button.soxcubs:active {
     -webkit-box-shadow: 
-        0px 2px #003279,
-        0px 3px #FFFFFF,
-        0px 4px #CC0033,
-        0px 5px #FFFFFF,
-        0px 7px #003279,
-        0px 8px 2px rgba(175,175,175,.6); /* shadow */
+        0px 1px #000000,
+        0px 2px #FFFFFF,
+        0px 3px #000000,
+        0px 4px #FFFFFF,
+        0px 5px #000000,
+        2px 7px 5px black,
+        -2px 7px 5px black;
 }
 
 button.bulls {
+    background-image: url("/img/button_images/6.jpg");
     -webkit-box-shadow: 
-        0px 1px #000000,
-        0px 2px #FFFFFF,
-        0px 5px #D4001F,
-        0px 6px #FFFFFF,
-        0px 7px #000000,
-        0px 10px 4px rgba(175,175,175,1); /* shadow */
+        0px 1px #FFFFFF,
+        0px 3px #000000,
+        0px 4px #D4001F,
+        0px 6px #000000,
+        0px 7px #FFFFFF,
+        3px 8px 5px black,
+        -3px 8px 5px black;
 }
 
 button.bulls:active {
     -webkit-box-shadow: 
-        0px 1px #D4001F,
-        0px 2px #FFFFFF,
+        0px 1px #FFFFFF,
+        0px 3px #000000,
+        0px 4px #D4001F,
         0px 5px #000000,
-        0px 6px #FFFFFF,
-        0px 7px #D4001F,
-        0px 8px 2px rgba(175,175,175,.6); /* shadow */
+        2px 7px 5px black,
+        -2px 7px 5px black;
+}
+
+#mlb_container, #nhl_container, #nfl_container, #nba_container {
+    /*background-image: url("/img/background_images/1.jpg");
+    background-size: contain;*/
 }

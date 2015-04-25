@@ -14,10 +14,13 @@ var functions = (function () {
 
         var elm = document.getElementById("container");
 
-        if (elm.style.visibility === "hidden")
+        if (elm.style.visibility === "hidden") {
+            elm.style.opacity = 1;
             elm.style.visibility = "visible";
-        else
+        } else {
+            elm.style.opacity = 0;
             elm.style.visibility = "hidden";
+        }
         
         visible = !visible;
     }
@@ -115,7 +118,6 @@ var functions = (function () {
                 var league = leagues[index];
                 requestGames(league, function (error, games) {
                     if (!error) {
-                        console.log("setting " + league + " to " + games);
                         allGames[league] = games;
                     }
                 });
@@ -129,8 +131,6 @@ var functions = (function () {
 
         buildHtml(allGames[league]);
         
-        console.log("show!");
-
         if (!visible) {
             toggleVisibility();
         }

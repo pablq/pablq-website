@@ -33,17 +33,18 @@ a:hover {
 
 button {
     cursor: pointer;
-
-    /* animation durations */
+    margin: 0;
+    padding: 0;
+    border: none;
+    /* standard animation durations */
     -webkit-transition: -webkit-transform .1s ease-in-out,
                         -webkit-box-shadow .1s ease-in-out;
 }
 
 button.main_button {
-    border: none;
+
     background-color: gray;
     background-size: 100% 100%;
-    display: inline-block;
     max-width: 600px;
     width:90%;
     height:19%;
@@ -96,7 +97,10 @@ ul {
 }
 
 #container {
-    position: fixed;
+    
+    transition: opacity .2s linear;
+    
+    position: absolute;
     z-index: 100;
     width: 100%;
     height: 100%;
@@ -104,25 +108,30 @@ ul {
     bottom: 0px;
     color: white;
 
-    background: rgba(255,255,255,.5) url("/img/trans/2-pos.png");
+    background: rgba(0,0,0,.3) url("/img/trans/2-pos.png");
     overflow-y: scroll;
 }
 
 #container ul {
-    margin-bottom: 125px;
+    margin-bottom: 120px;
 }
 
 #container footer {
+
     position: fixed;
     bottom: 0;
-    height: 115px;
+    height: 100px;
+
     width: 100%;    
     background: none;
+
     z-index: 101;
-    padding-bottom: 15px;
 }
 
 #container footer button {
+    position: relative;
+    bottom: 10px;
+
     height: 95px;
     color: white;
     
@@ -139,24 +148,24 @@ ul {
 }
 
 #refresh div {
-    height: 100%;
-    background: url("/img/refresh-white.png") no-repeat center;
+    height: 75px;
+    background: url("/img/refresh-black.png") no-repeat center;
     background-size: 75px 75px;
 }
 
 
-#refresh:active div {
-    background-image: url("/img/refresh-black.png");
+#refresh:hover div {
+    background-image: url("/img/refresh-white.png");
 }
 
 #close div {
-    height: 100%;
-    background: url("/img/close-white.png") no-repeat center;
+    height: 75px;
+    background: url("/img/close-black.png") no-repeat center;
     background-size: 75px 75px;
 }
 
-#close:active div {
-    background-image: url("/img/close-black.png");
+#close:hover div {
+    background-image: url("/img/close-white.png");
 }
 
 #container footer button:active {

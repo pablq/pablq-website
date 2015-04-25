@@ -35,7 +35,8 @@ function requestFromESPN (league, cb) {
             path: "/" + league + "/bottomline/scores",
             port: 80,
             method: "GET"
-        };
+        },
+        _id = Math.floor(Math.random() * 100);
 
     var gameReq = http.request(options, (gameRes) => {
 
@@ -45,13 +46,17 @@ function requestFromESPN (league, cb) {
             data += chunk;
         });
         gameRes.on("end", () => {
+            console.log("successful request with id: " + _id);
             cb(null, getGames(qs.parse(data), league));
         });
     });
 
     gameReq.on("error", (error) => {
+        console.log("failed request with id: " + _id);
         cb(error);
     });
+    
+    console.log("sending request with id: " + _id);
 
     gameReq.end();
 }

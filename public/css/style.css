@@ -1,22 +1,45 @@
 body {
+    position: relative;
+    /* override standard margin and padding */
+
+    box-sizing: border-box;
+
     margin: 0;
-    padding: 0;
+    padding: 5% 0;
 
     text-align: center;
     background-color: gray;
-    /* yikes... gradients... */
 
-    background: -webkit-linear-gradient(left top, red , blue); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom right, red, blue); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom right, red, blue); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom right, red , blue); /* Standard syntax */
+    /* background gradient */
+    background-image: url("/img/trans/2-pos.png"), -webkit-linear-gradient(left top, gray, white, gray, black); /* For Safari 5.1 to 6.0 */
+    background-image: url("/img/trans/2-pos.png"), -o-linear-gradient(bottom right, gray, white, gray, black); /* For Opera 11.1 to 12.0 */
+    background-image: -moz-linear-gradient(bottom right, white, gray, black); /* For Firefox 3.6 to 15 */
+    background-image: url("/img/trans/2-pos.png"), linear-gradient(to bottom right, white, gray, black); /* Standard syntax */
+    
+    background-size: contain;
 }
 
 a {
+    color: white;
     text-decoration: none;
+}
+a:visited {
+    color: white;
+}
+
+a:hover {
+   color: red;
 }
 
 button {
+    cursor: pointer;
+
+    /* animation durations */
+    -webkit-transition: -webkit-transform .2s ease-in-out,
+                        -webkit-box-shadow .1s ease-in-out;
+}
+
+button.main_button {
     border: none;
     background-color: gray;
     background-size: 100% 100%;
@@ -24,120 +47,99 @@ button {
     max-width: 600px;
     width:90%;
     height:19%;
-    margin-top:5%;
+    margin-bottom:5%;
+
     -webkit-border-radius: 10px;
-    -webkit-transition: -webkit-transform .2s ease-in-out,
-                        -webkit-box-shadow .1s ease-in-out;
+    
+
+    /* box-shadow */
+    -webkit-box-shadow: 
+        0px 7px black,
+        1px 8px 5px black,
+        -1px 8px 5px black;
+
+    /* background-image */
+    background-image: url("/img/button_images/7.jpg");
 
     font-family: Courier;
     font-size: 50px;
-    /*text-transform: uppercase;*/
 } 
 
-button:active {
-    -webkit-transform: translate(0, 5px); /* depth of button press */
-}
+button.main_button:active {
 
-button:hover {
-    font-weight: bold;
-    text-shadow: 0px 1px white;
-    cursor: pointer;
-}
+    /* press button down */ 
+    -webkit-transform: translate(0, 5px);
 
-
-button.hawks {
-    background-image: url("/img/button_images/4.jpg");
+    /* new box shadow */
     -webkit-box-shadow: 
-        0px 2px #C8102E,
-        0px 3px #FFFFFF,
-        0px 4px #2C2A29, 
-        0px 5px #FFFFFF,
-        0px 7px #C8102E,
-        1px 9px 5px rgba(0,0,0,1),
-        -1px 9px 5px rgba(0,0,0,1);
-}
-
-button.hawks:active {
-    -webkit-box-shadow: 
-        0px 2px #C8102E,
+        0px 2px black,
         0px 4px 4px black;
 }
 
-button.bears {
-    background-image: url("/img/button_images/5.jpg");
-    -webkit-box-shadow: 
-        0px 1px #03202F,
-        0px 2px #DD4814, 
-        0px 3px #03202F,
-        0px 4px #DD4814, 
-        0px 5px #03202F,
-        0px 6px #DD4814, 
-        0px 7px #03202F,
-        1px 8px 5px black,
-        -1px 8px 5px black;
+button.main_button:hover {
+    text-shadow: 0px 3px green;
 }
 
-button.bears:active {
-    -webkit-box-shadow: 
-        0px 1px #03202F,
-        0px 2px #DD4814, 
-        0px 4px 4px black;
+ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
 }
 
-button.soxcubs {
-    background-image: url("/img/button_images/7.jpg");
-    -webkit-box-shadow: 
-        0px 1px #000000,
-        0px 2px #FFFFFF,
-        0px 3px #000000,
-        0px 4px #FFFFFF,
-        0px 5px #000000,
-        0px 6px #FFFFFF,
-        0px 7px #000000,
-        1px 8px 5px black,
-        -1px 8px 5px black;
+.game {
+    margin: 10px;
+    padding: 25px;
+    border: 2px solid black;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, .85);
 }
 
-button.soxcubs:active {
-    -webkit-box-shadow: 
-        0px 1px #000000,
-        0px 2px #FFFFFF,
-        0px 4px 4px black;
-}
-
-button.bulls {
-    background-image: url("/img/button_images/6.jpg");
-    -webkit-box-shadow: 
-        0px 1px #FFFFFF,
-        0px 3px #000000,
-        0px 4px #D4001F,
-        0px 6px #000000,
-        0px 7px #FFFFFF,
-        1px 8px 5px black,
-        -1px 8px 5px black;
-}
-
-button.bulls:active {
-    -webkit-box-shadow: 
-        0px 1px #FFFFFF,
-        0px 2px #000000,
-        0px 4px 4px black;
-}
-
-#mlb_container, #nhl_container, #nfl_container, #nba_container {
-
-    display: inline-block;
-
-
-    width: 90%;
-    max-width: 600px;
+#container {
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    top: 0px; 
+    bottom: 0px;
     color: white;
-    background-image: url("/img/background_images/2.jpg");
-    background-size: cover;
+
+    background: rgba(255,255,255,.5) url("/img/trans/2-pos.png");
+    overflow-y: scroll;
 }
 
-#mlb_container div, #nhl_container div, #nfl_container div, #nba_container div {
-    text-align: left;
+#container ul {
+    margin-bottom: 125px;
 }
 
+#container footer {
+    position: fixed;
+    bottom: 0;
+    height: 115px;
+    width: 100%;    
+    background: none;
+    z-index: 101;
+}
 
+#container footer button {
+    height: 95px;
+    color: white;
+    
+    width: 41%;
+    margin: 3%;
+
+    border: none;
+    background: red;
+    background-image: linear-gradient(bottom, rgba(14,137,182, 1) 0%, rgba(22,179,236,1) 100%);
+    border-radius: 5px;
+    box-shadow: inset 1px 0px 0px white, 
+                0px 3px 0px 0px white, 
+                0px 5px 3px black;
+    bottom: 15px;
+}
+
+#container footer button:active {
+    -webkit-transform: translate(0, 2px);
+    box-shadow: inset 1px 0px 0px white, 
+                0px 1px 0px 0px white, 
+                0px 3px 3px black;
+}

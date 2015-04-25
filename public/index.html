@@ -10,19 +10,22 @@
     </head>
 
     <body>
-        <button class="soxcubs" onclick="showSport('mlb')" >Baseball</button></br>
-        <div id="mlb_container" style="display:none"></div>
-
-        <button class="hawks" onclick="showSport('nhl')">Hockey</button></br>
-        <div id="nhl_container" style="display:none"></div>
-
-        <button class="bears" onclick="showSport('nfl')">Football</button></br>
-        <div id="nfl_container" style="display:none"></div>
-
-        <button class="bulls" onclick="showSport('nba')">Basketball</button></br>
-        <div id="nba_container" style="display:none"></div>
+        <div id="container" style="position:absolute; visibility:hidden;">
+            <ul id="games"></ul>
+            <footer>
+                <button id="refresh" onclick="functions.refresh()">refresh</button>
+                <button id="close" onclick="functions.close()">close</button>
+            </footer>
+        </div>
         
-        <br/><br/>
-        <a href="https://github.com/pablq/pablq-org">code</a>
+        <button class="main_button" onclick="functions.show('mlb')" >MLB</button></br>
+
+        <button class="main_button" onclick="functions.show('nhl')">NHL</button></br>
+
+        <button class="main_button" onclick="functions.show('nfl')">NFL</button></br>
+
+        <button class="main_button" onclick="functions.show('nba')">NBA</button></br>
+        
+        <a href="https://github.com/pablq/pablq-org">https://github.com/pablq/pablq-org</a>
     </body>
 </html>

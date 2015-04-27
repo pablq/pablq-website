@@ -1,5 +1,7 @@
 var public_funcs = (function () {
 
+    "use strict";
+
     var visible = false;
 
     function toggleVisibility() {
@@ -13,14 +15,12 @@ var public_funcs = (function () {
             elm.style.opacity = 0;
             elm.style.visibility = "hidden";
         }
-        
         visible = !visible;
     }
 
     function requestGames(league, cb) {
 
-        var xmlhttp,
-            _id = Math.floor(Math.random() * 100);
+        var xmlhttp;
 
         if (window.XMLHttpRequest) {
             // for IE7+, Firefox, Chrome, Opera, Safari
@@ -29,10 +29,10 @@ var public_funcs = (function () {
             // for IE6, IE5
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
-        
+
         xmlhttp.onreadystatechange = function () {
 
-            if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
+            if (xmlhttp.readyState === XMLHttpRequest.DONE) {
                 if (xmlhttp.status === 200) {
                     // success! pass null error
                     cb(null, JSON.parse(xmlhttp.responseText));
@@ -41,10 +41,18 @@ var public_funcs = (function () {
                     cb(xmlhttp.status);
                 }
             }
-        }
+        };
 
-        xmlhttp.open("GET", "/sports/" + league, true);
-        xmlhttp.send();
+        if (xmlhttp) {
+            xmlhttp.open("GET", "/sports/" + league, true);
+            xmlhttp.send();
+        }
+    }
+
+    function deleteChildNodes(node) {
+        while (node.firstChild) {
+            node.removeChild(node.firstChild);
+        }
     }
 
     function buildHtml(data) {
@@ -54,30 +62,31 @@ var public_funcs = (function () {
             li,
             link,
             headline,
-            p;
+            p,
+            i,
+            len,
+            j;
 
         deleteChildNodes(games);
-        
+
         if (data && data.length) {
 
-            for (var i = 0, len = data.length; i < len; i += 1) {
-            
+            for (i = 0, len = data.length; i < len; i += 1) {
                 item = data[i];
-                console.log(item);
 
-                li = document.createElement("li"),
-                link = document.createElement("a"),
+                li = document.createElement("li");
+                link = document.createElement("a");
                 headline = document.createTextNode(item.headline);
-                
+
                 if (item.headline.search("Chicago") > -1) {
-                    li.setAttribute("class","chicago");
+                    li.setAttribute("class", "chicago");
                 }
                 link.setAttribute("href", item.link);
                 link.setAttribute("target", "_blank");
                 link.appendChild(headline);
                 link.appendChild(document.createElement("br"));
 
-                for (var j = 0; j < item.lineCount; j += 1) {
+                for (j = 0; j < item.lineCount; j += 1) {
                     p = document.createTextNode(item["p" + (j + 1)]);
                     link.appendChild(p);
                     link.appendChild(document.createElement("br"));
@@ -94,16 +103,49 @@ var public_funcs = (function () {
         }
     }
 
-    function deleteChildNodes(node) {
-        while (node.firstChild) {
-            node.removeChild(node.firstChild);
-        }
-    }
-
-    function close () {
+    function close() {
         if (visible) {
             toggleVisibility();
         }
+    }
+
+    function createButtonImageStrings() {
+        var buttonImageStrings = [],
+            n;
+
+        for (n = 1; n <= 22; n += 1) {
+            buttonImageStrings.push("/img/button_backgrounds/" + n + ".jpg");
+        }
+        return buttonImageStrings;
+    }
+
+    function createBackgroundImageStrings() {
+        var backgroundImageStrings = [],
+            n;
+
+        for (n = 1; n <= 22; n += 1) {
+            backgroundImageStrings.push("/img/backgrounds/" + n + "-pos.png");
+        }
+        return backgroundImageStrings;
+    }
+
+    function createBodyBackgroundImageStrings() {
+        var bodyBackgroundImageStrings = [],
+            n;
+
+        for (n = 1; n <= 22; n += 1) {
+            bodyBackgroundImageStrings.push("url(/img/backgrounds/" + n + "-pos.png), linear-gradient(to bottom right, white, gray, black)");
+        }
+        return bodyBackgroundImageStrings;
+    }
+
+    function getRandInRange(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+
+    function setBackgroundImage(id, url) {
+        var elm = document.getElementById(id);
+        elm.style.backgroundImage = "url(" + url + ")";
     }
 
     function init() {
@@ -113,12 +155,15 @@ var public_funcs = (function () {
                 { id: "button2", type: "button" },
                 { id: "button3", type: "button" },
                 { id: "button4", type: "button" },
-                { id: "container" },
+                { id: "container" }
             ],
             item,
-            images;
-            
-        for (var i = 0, len = ids_w_type.length; i < len; i += 1) {
+            images,
+            i,
+            len,
+            url;
+
+        for (i = 0, len = ids_w_type.length; i < len; i += 1) {
             item = ids_w_type[i];
             if (item.type === "button") {
                 images = createButtonImageStrings();
@@ -130,16 +175,14 @@ var public_funcs = (function () {
         }
 
         images = createBodyBackgroundImageStrings();
-        document.body.style.backgroundImage = images[getRandInRange(0,images.length)];
+        document.body.style.backgroundImage = images[getRandInRange(0, images.length)];
 
         /* set click listener to close view of games */
         document.getElementById("invisible_close_button").addEventListener("click", close);
     }
 
-    function show(league) { 
-
+    function show(league) {
         requestGames(league, function (error, games) {
-
             // buildHtml handles failed requests
             buildHtml(games);
 
@@ -149,61 +192,10 @@ var public_funcs = (function () {
         });
     }
 
-    function setBackgroundImage(id, url) {
-        var elm = document.getElementById(id);
-        elm.style.backgroundImage = "url(" + url + ")";
-    }
-
-    function createButtonImageStrings() {
-        var buttonImageStrings = [];
-        for (var n = 1; n <= 22; n += 1) {
-            buttonImageStrings.push("/img/button_backgrounds/" + n + ".jpg");
-        }
-        return buttonImageStrings;
-    }
-
-    function createBackgroundImageStrings() {
-        var backgroundImageStrings = [];
-        for (var n = 1; n <= 22; n += 1) {
-            backgroundImageStrings.push("/img/backgrounds/" + n + "-pos.png");
-        }
-        return backgroundImageStrings;
-    }
-
-    function createBodyBackgroundImageStrings() {
-        var bodyBackgroundImageStrings = [];
-        for (var n = 1; n <= 22; n += 1) {
-            bodyBackgroundImageStrings.push("url(/img/backgrounds/" + n + "-pos.png), linear-gradient(to bottom right, white, gray, black)");
-        }
-        return bodyBackgroundImageStrings;
-    }
-
-    function getRandInRange(min, max) {
-        return Math.floor(Math.random() * (max - min)) + min;
-    }
-
-    function setBackgroundImages(ids_with_type) {
-        var id_with_type,
-            images,
-            url;
-
-        for (var i = 0, len = ids_with_type.length; i < len; i += 1) {
-            
-            id_with_type = ids_with_type[i];
-            if (id_with_type.type === "button") {
-                images = createButtonImageStrings();
-            } else {
-                images = createBackgroundImageStrings();
-            }
-            url = images[getRandInRange(0, images.length - 1)];
-            setBackgroundImage(id_with_type.id, url);
-        }
-    }
-
     return {
         show: show,
         init: init
-    }
+    };
 
 }());
 

@@ -157,7 +157,7 @@ var public_funcs = (function () {
     function createButtonImageStrings() {
         var buttonImageStrings = [];
         for (var n = 1; n <= 22; n += 1) {
-            buttonImageStrings.push("/img/buttons/" + n + ".jpg");
+            buttonImageStrings.push("/img/button_backgrounds/" + n + ".jpg");
         }
         return buttonImageStrings;
     }
@@ -165,7 +165,7 @@ var public_funcs = (function () {
     function createBackgroundImageStrings() {
         var backgroundImageStrings = [];
         for (var n = 1; n <= 22; n += 1) {
-            backgroundImageStrings.push("/img/" + n + "-pos.png");
+            backgroundImageStrings.push("/img/backgrounds/" + n + "-pos.png");
         }
         return backgroundImageStrings;
     }
@@ -173,7 +173,7 @@ var public_funcs = (function () {
     function createBodyBackgroundImageStrings() {
         var bodyBackgroundImageStrings = [];
         for (var n = 1; n <= 22; n += 1) {
-            bodyBackgroundImageStrings.push("url(/img/" + n + "-pos.png), linear-gradient(to bottom right, white, gray, black)");
+            bodyBackgroundImageStrings.push("url(/img/backgrounds/" + n + "-pos.png), linear-gradient(to bottom right, white, gray, black)");
         }
         return bodyBackgroundImageStrings;
     }

@@ -12,7 +12,7 @@ body {
     background: gray;
     
     /* background-image set via javascript */
-    background-size: contain;
+    background-size: cover;
 }
 
 a {
@@ -75,6 +75,40 @@ button:hover {
    /* nothing for now */ 
 }
 
+button div {
+    height: 100%;
+    max-height: 200px;
+}
+
+#button1 div {
+    background: url("/img/baseball.png") center no-repeat;
+}
+
+#button1:active div, #button1:hover div {
+    background-image: url("/img/baseball_active.png");
+}
+
+#button2 div {
+    background: url("/img/puck.png") center no-repeat;
+}
+#button2:active div, #button2:hover div {
+    background-image: url("/img/puck_active.png");
+}
+
+#button3 div {
+    background: url("/img/football.png") center no-repeat;
+}
+#button3:active div, #button3:hover div {
+    background-image: url("/img/football_active.png");
+}
+
+#button4 div {
+    background: url("/img/basketball.png") center no-repeat;
+}
+#button4:active div, #button4:hover div {
+    background-image: url("/img/basketball_active.png");
+}
+
 ul {
     padding: 0px;
     list-style-type: none;
@@ -123,8 +157,8 @@ ul li a {
     color: white;
 
     background: rgba(0,0,0,.5);
+    background-size: contain;
     overflow-y: scroll;
-    background-size: cover;
 
     padding-top: 50px;
     padding-bottom: 50px;

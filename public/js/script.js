@@ -1,14 +1,6 @@
-var functions = (function () {
+var public_funcs = (function () {
 
-    var allGames = {
-            mlb: [],
-            nhl: [],
-            nfl: [],
-            nba: []
-        },
-        leagues = Object.keys(allGames),
-        current_league,
-        visible = false;
+    var visible = false;
 
     function toggleVisibility() {
 
@@ -41,7 +33,7 @@ var functions = (function () {
         xmlhttp.onreadystatechange = function () {
 
             if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
-                if (xmlhttp.status = 200) {
+                if (xmlhttp.status === 200) {
                     // success! pass null error
                     cb(null, JSON.parse(xmlhttp.responseText));
                 } else {
@@ -55,35 +47,51 @@ var functions = (function () {
         xmlhttp.send();
     }
 
-    function buildHtml(games) {
+    function buildHtml(data) {
 
-        var gamesList = document.getElementById("games");
+        var games = document.getElementById("games"),
+            item,
+            li,
+            link,
+            headline,
+            p;
 
-        deleteChildNodes(gamesList);
-
-        for (var i = 0, len = games.length; i < len; i += 1) {
-            var game = document.createElement("li"),
-                link = document.createElement("a"),
-                headline = document.createTextNode(games[i].headline),
-                p;
-
-            game.setAttribute("class","game");
-
-            link.setAttribute("href", games[i].link);
-            link.setAttribute("target", "_blank");
-
-            link.appendChild(headline);
-            link.appendChild(document.createElement("br"));
-
-            for (var j = 0; j < games[i].lineCount; j += 1) {
-                p = document.createTextNode(games[i]["p" + (j + 1)]);
-                link.appendChild(p);
-                link.appendChild(document.createElement("br"));
-            }
-            game.appendChild(link);
-            gamesList.appendChild(game);
-        }
+        deleteChildNodes(games);
         
+        if (data && data.length) {
+
+            for (var i = 0, len = data.length; i < len; i += 1) {
+            
+                item = data[i];
+                console.log(item);
+
+                li = document.createElement("li"),
+                link = document.createElement("a"),
+                headline = document.createTextNode(item.headline);
+                
+                if (item.headline.search("Chicago") > -1) {
+                    li.setAttribute("class","chicago");
+                }
+                link.setAttribute("href", item.link);
+                link.setAttribute("target", "_blank");
+                link.appendChild(headline);
+                link.appendChild(document.createElement("br"));
+
+                for (var j = 0; j < item.lineCount; j += 1) {
+                    p = document.createTextNode(item["p" + (j + 1)]);
+                    link.appendChild(p);
+                    link.appendChild(document.createElement("br"));
+                }
+                li.appendChild(link);
+                games.appendChild(li);
+            }
+
+        } else {
+
+            li = document.createElement("li");
+            li.appendChild(document.createTextNode("Sorry, there was a problem. :("));
+            games.appendChild(li);
+        }
     }
 
     function deleteChildNodes(node) {
@@ -98,51 +106,105 @@ var functions = (function () {
         }
     }
 
-    function refresh() {
-        var league = current_league;
-        requestGames(league, function (error, games) {
-            if (!error) {
-                allGames[league] = games;
-                show(league);
-            }
-        });
-    }
-    
     function init() {
-        var i,
-            len,
-            league;
-
-        for (i = 0, len = leagues.length; i < len; i += 1) {
-            (function (index) {
-                var league = leagues[index];
-                requestGames(league, function (error, games) {
-                    if (!error) {
-                        allGames[league] = games;
-                    }
-                });
-            })(i)
+        /* set background images */
+        var ids_w_type = [
+                { id: "button1", type: "button" },
+                { id: "button2", type: "button" },
+                { id: "button3", type: "button" },
+                { id: "button4", type: "button" },
+                { id: "container" },
+            ],
+            item,
+            images;
+            
+        for (var i = 0, len = ids_w_type.length; i < len; i += 1) {
+            item = ids_w_type[i];
+            if (item.type === "button") {
+                images = createButtonImageStrings();
+            } else {
+                images = createBackgroundImageStrings();
+            }
+            url = images[getRandInRange(0, images.length - 1)];
+            setBackgroundImage(item.id, url);
         }
+
+        images = createBodyBackgroundImageStrings();
+        document.body.style.backgroundImage = images[getRandInRange(0,images.length)];
+
+        /* set click listener to close view of games */
+        document.getElementById("invisible_close_button").addEventListener("click", close);
     }
 
     function show(league) { 
 
-        current_league = league;
+        requestGames(league, function (error, games) {
 
-        buildHtml(allGames[league]);
-        
-        if (!visible) {
-            toggleVisibility();
+            // buildHtml handles failed requests
+            buildHtml(games);
+
+            if (!visible) {
+                toggleVisibility();
+            }
+        });
+    }
+
+    function setBackgroundImage(id, url) {
+        var elm = document.getElementById(id);
+        elm.style.backgroundImage = "url(" + url + ")";
+    }
+
+    function createButtonImageStrings() {
+        var buttonImageStrings = [];
+        for (var n = 1; n <= 22; n += 1) {
+            buttonImageStrings.push("/img/buttons/" + n + ".jpg");
+        }
+        return buttonImageStrings;
+    }
+
+    function createBackgroundImageStrings() {
+        var backgroundImageStrings = [];
+        for (var n = 1; n <= 22; n += 1) {
+            backgroundImageStrings.push("/img/" + n + "-pos.png");
+        }
+        return backgroundImageStrings;
+    }
+
+    function createBodyBackgroundImageStrings() {
+        var bodyBackgroundImageStrings = [];
+        for (var n = 1; n <= 22; n += 1) {
+            bodyBackgroundImageStrings.push("url(/img/" + n + "-pos.png), linear-gradient(to bottom right, white, gray, black)");
+        }
+        return bodyBackgroundImageStrings;
+    }
+
+    function getRandInRange(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+
+    function setBackgroundImages(ids_with_type) {
+        var id_with_type,
+            images,
+            url;
+
+        for (var i = 0, len = ids_with_type.length; i < len; i += 1) {
+            
+            id_with_type = ids_with_type[i];
+            if (id_with_type.type === "button") {
+                images = createButtonImageStrings();
+            } else {
+                images = createBackgroundImageStrings();
+            }
+            url = images[getRandInRange(0, images.length - 1)];
+            setBackgroundImage(id_with_type.id, url);
         }
     }
 
     return {
         show: show,
-        close: close,
-        refresh: refresh,
         init: init
     }
 
 }());
 
-window.onload = functions.init;
+public_funcs.init();

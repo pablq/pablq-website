@@ -1,30 +1,30 @@
 body {
-    position: relative;
-    /* override standard margin and padding */
 
-    box-sizing: border-box;
+    /* for absolute/fixed position children */
+    position: relative;
 
     margin: 0;
-    padding: 5% 0;
+    padding: 50px 0;
 
     text-align: center;
-    background-color: gray;
+    font-size: 2em;
 
-    /* background gradient */
-    background-image: url("/img/trans/2-pos.png"), -webkit-linear-gradient(left top, gray, white, gray, black); /* For Safari 5.1 to 6.0 */
-    background-image: url("/img/trans/2-pos.png"), -o-linear-gradient(bottom right, gray, white, gray, black); /* For Opera 11.1 to 12.0 */
-    background-image: -moz-linear-gradient(bottom right, white, gray, black); /* For Firefox 3.6 to 15 */
-    background-image: url("/img/trans/2-pos.png"), linear-gradient(to bottom right, white, gray, black); /* Standard syntax */
+    background: gray;
     
+    /* background-image set via javascript */
     background-size: contain;
 }
 
 a {
-    color: white;
+    color: white;    
+}
+
+li a {
     text-decoration: none;
 }
+
 a:visited {
-    color: white;
+    color: white;    
 }
 
 a:hover {
@@ -33,41 +33,33 @@ a:hover {
 
 button {
     cursor: pointer;
-    margin: 0;
-    padding: 0;
-    border: none;
-    /* standard animation durations */
-    -webkit-transition: -webkit-transform .1s ease-in-out,
-                        -webkit-box-shadow .1s ease-in-out;
-}
 
-button.main_button {
+    margin: 0 50px;
+    margin-bottom: 50px;
 
-    background-color: gray;
-    background-size: 100% 100%;
+    width: 60%;
     max-width: 600px;
-    width:90%;
-    height:19%;
-    margin-bottom:5%;
+    height: 200px;
 
+    border: none;
     -webkit-border-radius: 10px;
-    -webkit-transition: -webkit-transform .2s ease-in-out;
-    
 
     /* box-shadow */
     -webkit-box-shadow: 
         0px 7px black,
-        1px 8px 5px black,
-        -1px 8px 5px black;
+        1px 8px 4px black,
+        -1px 8px 4px black;
 
-    /* background-image */
-    background-image: url("/img/button_images/7.jpg");
+    /* standard animation durations */
+    -webkit-transition: -webkit-transform .2s ease-in-out,
+                        -webkit-box-shadow .1s ease-in-out;
+    
+    background: gray; /* backup */
 
-    font-family: Courier;
-    font-size: 50px;
+    /* background-image set by javascript */
 } 
 
-button.main_button:active {
+button:active {
 
     /* press button down */ 
     -webkit-transform: translate(0, 5px);
@@ -75,102 +67,65 @@ button.main_button:active {
     /* new box shadow */
     -webkit-box-shadow: 
         0px 2px black,
-        0px 4px 4px black;
+        1px 4px 4px black,
+        -1px 4px 4px black;
 }
 
-button.main_button:hover {
-    text-shadow: 0px 3px green;
+button:hover {
+   /* nothing for now */ 
 }
 
 ul {
-    list-style-type: none;
     padding: 0px;
-    margin: 0px;
+    list-style-type: none;
+    display: inline-block;
 }
 
-.game {
-    margin: 10px;
-    padding: 25px;
-    border: 2px solid black;
+ul li {
+    margin-bottom: 50px;
     border-radius: 5px;
     background: rgba(0, 0, 0, .85);
+    border: 2px solid white;
+}
+
+ul li a {
+    /* it will take up whole li */
+    display: block;
+    padding: 25px;
+}
+
+
+.chicago {
+    /* overrides standard white border */
+    border: 2px solid red;
+}
+
+#invisible_close_button {
+    position: fixed;
+    /* must be pushed behind ul */
+    z-index: -1;
+    width: 100%;
+    top: 0px; 
+    bottom: 0px;
+    background: none;
 }
 
 #container {
-    
+
     transition: opacity .2s linear;
     
     position: absolute;
+    /* pushed to front */
     z-index: 100;
     width: 100%;
-    height: 100%;
     top: 0px; 
     bottom: 0px;
     color: white;
 
-    background: rgba(0,0,0,.3) url("/img/trans/2-pos.png");
+    background: rgba(0,0,0,.5);
     overflow-y: scroll;
-}
+    background-size: cover;
 
-#container ul {
-    margin-bottom: 120px;
-}
-
-#container footer {
-
-    position: fixed;
-    bottom: 0;
-    height: 100px;
-
-    width: 100%;    
-    background: none;
-
-    z-index: 101;
-}
-
-#container footer button {
-    position: relative;
-    bottom: 10px;
-
-    height: 95px;
-    color: white;
-    
-    width: 41%;
-    margin: 0 3%;
-
-    border: none;
-    background: red;
-    border-radius: 5px;
-    box-shadow: inset 1px 0px 0px white, 
-                0px 1px 0px 0px white,
-                0px 3px 0px 0px gray, 
-                0px 5px 3px black;
-}
-
-#refresh div {
-    height: 75px;
-    background: url("/img/refresh-black.png") no-repeat center;
-    background-size: 75px 75px;
-}
-
-
-#refresh:hover div {
-    background-image: url("/img/refresh-white.png");
-}
-
-#close div {
-    height: 75px;
-    background: url("/img/close-black.png") no-repeat center;
-    background-size: 75px 75px;
-}
-
-#close:hover div {
-    background-image: url("/img/close-white.png");
-}
-
-#container footer button:active {
-    -webkit-transform: translate(0, 2px);
-    box-shadow: inset 1px 0px 0px white, 
-                0px 1px 0px 0px white,
-                0px 3px 3px black;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }

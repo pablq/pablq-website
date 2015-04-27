@@ -36,7 +36,10 @@ function requestFromESPN (league, cb) {
             port: 80,
             method: "GET"
         },
-        _id = Math.floor(Math.random() * 100);
+        decodeURIComponent = function (c) {
+            c = c.replace(/%(A|B|C)\w{1}(%20)+/,"");
+            return c.replace(/%20/g," ");
+        };
 
     var gameReq = http.request(options, (gameRes) => {
 
@@ -46,18 +49,14 @@ function requestFromESPN (league, cb) {
             data += chunk;
         });
         gameRes.on("end", () => {
-            console.log("successful request with id: " + _id);
-            cb(null, getGames(qs.parse(data), league));
+            cb(null, getGames(qs.parse(data, null, null, { decodeURIComponent: decodeURIComponent }), league));
         });
     });
 
     gameReq.on("error", (error) => {
-        console.log("failed request with id: " + _id);
         cb(error);
     });
     
-    console.log("sending request with id: " + _id);
-
     gameReq.end();
 }
 

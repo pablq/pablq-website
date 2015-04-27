@@ -1,22 +1,11 @@
-this application is in a state of flux.
+this site is done for now.
 
-the server uses ECMAScript 6 so it should be run with the --harmony flag
+THIS IS BY NO MEANS A POLISHED PROJECT.
 
-next up: resolve front end.
-1. create functionality to update data without leaving page.
-2. what happens if the server sends shitty data??? protect against this.
-3. figure out how you want the layout to be.
-    > mobile first!
-    > simple but stylish.
-    > do try to work a small animation in there!
+this is a sketch made for the purpose of getting more comfortable with the dom and window api's.
 
-i am insistent on keeping the front end and server vanilla for this iteration. 
-i'm doing this to learn the dom and get a better sense for what kinds of things are being done for me behind the scenes with various frameworks.
+i've also had a bit of fun making a route on my server. i MAYY go back into it and make the route system nicer.
 
-things to work out yet on the server side:
-- i'm still getting messed up symbols in baseball (for out counts). -> i need a robust solution
-- is the favicon being served?
-- think about the routes... something about the way you're doing it doesn't feel clean. think about a better way to do the routing.
-    ^ ask someone about how to do it.
+run server with --harmony tag
 
 Pablo

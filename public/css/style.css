@@ -77,7 +77,8 @@ button:hover {
 
 button div {
     height: 100%;
-    max-height: 200px;
+    max-height: 125px;
+    background-size; contain;
 }
 
 #button1 div {

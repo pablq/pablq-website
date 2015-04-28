@@ -1,4 +1,4 @@
-var public_funcs = (function () {
+var publicFuncs = (function () {
 
     "use strict";
 
@@ -58,7 +58,7 @@ var public_funcs = (function () {
     function buildHtml(data) {
 
         var games = document.getElementById("games"),
-            item,
+            game,
             li,
             link,
             headline,
@@ -72,22 +72,22 @@ var public_funcs = (function () {
         if (data && data.length) {
 
             for (i = 0, len = data.length; i < len; i += 1) {
-                item = data[i];
+                game = data[i];
 
                 li = document.createElement("li");
                 link = document.createElement("a");
-                headline = document.createTextNode(item.headline);
+                headline = document.createTextNode(game.headline);
 
-                if (item.headline.search("Chicago") > -1) {
+                if (game.headline.search("Chicago") > -1) {
                     li.setAttribute("class", "chicago");
                 }
-                link.setAttribute("href", item.link);
+                link.setAttribute("href", game.link);
                 link.setAttribute("target", "_blank");
                 link.appendChild(headline);
                 link.appendChild(document.createElement("br"));
 
-                for (j = 0; j < item.lineCount; j += 1) {
-                    p = document.createTextNode(item["p" + (j + 1)]);
+                for (j = 0; j < game.lineCount; j += 1) {
+                    p = document.createTextNode(game["p" + (j + 1)]);
                     link.appendChild(p);
                     link.appendChild(document.createElement("br"));
                 }
@@ -150,28 +150,28 @@ var public_funcs = (function () {
 
     function init() {
         /* set background images */
-        var ids_w_type = [
+        var elements = [
                 { id: "button1", type: "button" },
                 { id: "button2", type: "button" },
                 { id: "button3", type: "button" },
                 { id: "button4", type: "button" },
                 { id: "container" }
             ],
-            item,
+            element,
             images,
             i,
             len,
             url;
 
-        for (i = 0, len = ids_w_type.length; i < len; i += 1) {
-            item = ids_w_type[i];
-            if (item.type === "button") {
+        for (i = 0, len = elements.length; i < len; i += 1) {
+            element = elements[i];
+            if (element.type === "button") {
                 images = createButtonImageStrings();
             } else {
                 images = createBackgroundImageStrings();
             }
             url = images[getRandInRange(0, images.length - 1)];
-            setBackgroundImage(item.id, url);
+            setBackgroundImage(element.id, url);
         }
 
         images = createBodyBackgroundImageStrings();
@@ -199,4 +199,4 @@ var public_funcs = (function () {
 
 }());
 
-public_funcs.init();
+publicFuncs.init();

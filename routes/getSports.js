@@ -1,9 +1,10 @@
 var http = require("http"),
     qs = require("querystring");
 
-module.exports = (league, req, res) => {
+module.exports = (args, req, res) => {
     
-    var leagues = [ "mlb", "nba", "nfl", "nhl" ];
+    var leagues = [ "mlb", "nba", "nfl", "nhl" ],
+        league = args[0];
     
     if (leagues.indexOf(league) === -1) {
 

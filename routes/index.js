@@ -3,7 +3,11 @@ var getStatic = require("./getStatic"),
 
 module.exports = (req, res) => {
     
-    var path;
+    var path, 
+        routes = {
+            sports: getSports,
+            default: getStatic
+        };
 
     if (req.method !== "GET") {
 
@@ -14,13 +18,13 @@ module.exports = (req, res) => {
         
         path = req.url.match(/\w+/g);
 
-        if (path && path[0] === "sports") {
+        if (path && routes[path[0]]) {
         
-            getSports(path[1], req, res);
+            routes[path[0]](path.slice(1), req, res);
 
         } else {
 
-            getStatic(req, res);
+            routes["default"](req, res);
         }
     }
 }

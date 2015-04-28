@@ -27,7 +27,7 @@ module.exports = (args, req, res) => {
             }
         });
     }
-}
+};
 
 function requestFromESPN (league, cb) {
         

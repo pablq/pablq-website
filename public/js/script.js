@@ -24,7 +24,7 @@ var public_funcs = (function () {
 
         if (window.XMLHttpRequest) {
             // for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
+            xmlhttp = new XMLHttpRequest({mozAnon: true});
         } else {
             // for IE6, IE5
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");

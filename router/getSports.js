@@ -22,7 +22,8 @@ module.exports = (args, req, res) => {
 
             } else {
 
-                res.writeHead(200, { "Content-Type" : "text/json" });
+                res.writeHead(200, { "Content-Type" : "text/json",
+                                     "Cache-Control" : "no-cache" });
                 res.end(JSON.stringify(data));
             }
         });

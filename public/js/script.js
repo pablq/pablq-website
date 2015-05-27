@@ -55,7 +55,7 @@ var publicFuncs = (function () {
         }
     }
 
-    function buildHtml(data) {
+    function buildHtml(data, fail) {
 
         var games = document.getElementById("games"),
             game,
@@ -68,8 +68,14 @@ var publicFuncs = (function () {
             j;
 
         deleteChildNodes(games);
-
-        if (data && data.length) {
+        
+        if (fail) {
+            
+            li = document.createElement("li");
+            li.appendChild(document.createTextNode("Sorry, there was a problem. :("));
+            games.appendChild(li);
+            
+        } else if (data && data.length) {
 
             for (i = 0, len = data.length; i < len; i += 1) {
                 game = data[i];
@@ -98,7 +104,7 @@ var publicFuncs = (function () {
         } else {
 
             li = document.createElement("li");
-            li.appendChild(document.createTextNode("Sorry, there was a problem. :("));
+            li.appendChild(document.createTextNode("No games today :)"));
             games.appendChild(li);
         }
     }
@@ -184,7 +190,7 @@ var publicFuncs = (function () {
     function show(league) {
         requestGames(league, function (error, games) {
             // buildHtml handles failed requests
-            buildHtml(games);
+            buildHtml(games, error);
 
             if (!visible) {
                 toggleVisibility();

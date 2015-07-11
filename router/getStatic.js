@@ -37,7 +37,8 @@ module.exports = (req, res) => {
                     res.end("SERVER ERROR\n");
 
                 } else {
-
+                    
+                    console.log("Serving file:", filePath);
                     res.writeHead(200, { "Content-Type" : getContentType(filePath) });
                     res.end(content);
                 }

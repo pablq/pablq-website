@@ -10,7 +10,7 @@ module.exports = (() => {
         };
 
     return (req, res) => {
-    
+        
         var path;
 
         if (req.method !== "GET") {

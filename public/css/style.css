@@ -64,7 +64,6 @@ button {
 } 
 
 button:active {
-
     /* press button down */ 
     -webkit-transform: translate(0, 5px);
 
@@ -73,10 +72,6 @@ button:active {
         0px 2px black,
         1px 4px 4px black,
         -1px 4px 4px black;
-}
-
-button:hover {
-   /* nothing for now */ 
 }
 
 button div {
@@ -144,19 +139,20 @@ ul li a {
     /* must be pushed behind ul */
     z-index: -1;
     width: 100%;
+    min-height: 100%;
     top: 0px; 
     bottom: 0px;
     background: none;
 }
 
 #container {
-
     transition: opacity .2s linear;
     
     position: absolute;
     /* pushed to front */
     z-index: 100;
     width: 100%;
+    min-height: 100%;
     top: 0px; 
     bottom: 0px;
     color: white;

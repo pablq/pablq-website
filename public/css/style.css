@@ -1,27 +1,27 @@
 html {
+    /* for absolute and relative positioned children */
+    position: relative;
+
     height: auto;
     min-height: 100%;
     width: 100%;
+
+    margin: 0;
 }
 
 body {
-    height: auto;
-    min-height: 100%;
+    height: 100%;
     width: 100%;
 
-    /* for absolute/fixed position children */
-    position: relative;
-
-    margin: 0;
     padding: 50px 0;
+    
+    /* background-image set via javascript */
+    background: gray;
+    background-size: cover;
 
     text-align: center;
     font-size: 2em;
-
-    background: gray;
-    
-    /* background-image set via javascript */
-    background-size: cover;
+    color: white;
 }
 
 a {
@@ -115,16 +115,18 @@ button div {
 }
 
 ul {
-    padding: 0px;
     list-style-type: none;
     display: inline-block;
+    padding: 0px;
 }
 
 ul li {
     margin-bottom: 50px;
-    border-radius: 5px;
+
     background: rgba(0, 0, 0, .85);
+
     border: 2px solid white;
+    border-radius: 5px;
 }
 
 ul li a {
@@ -140,33 +142,36 @@ ul li a {
 }
 
 #invisible_close_button {
+    top: 0;
     position: fixed;
-    /* must be pushed behind ul */
-    z-index: -1;
-    width: 100%;
-    min-height: 100%;
-    top: 0px; 
-    bottom: 0px;
-    background: none;
-}
 
-#container {
-    transition: opacity .2s linear;
-    
-    position: absolute;
-    /* pushed to front */
-    z-index: 100;
     width: 100%;
     height: 100%;
 
-    top: 0px; 
-    bottom: 0px;
-    color: white;
+    background: none;
+
+    /* must be pushed behind ul */
+    z-index: -1;
+}
+
+#container {
+    position: absolute;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
 
     background: rgba(0,0,0,.5);
     background-size: contain;
+
+    box-sizing: border-box;
     overflow-y: scroll;
 
     padding-top: 50px;
     padding-bottom: 50px;
+
+    transition: opacity .2s linear;
+
+    /* pushed to front */
+    z-index: 100;
 }

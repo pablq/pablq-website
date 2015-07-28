@@ -1,9 +1,14 @@
-html, body {
+html {
+    height: auto;
     min-height: 100%;
     width: 100%;
 }
 
 body {
+    height: auto;
+    min-height: 100%;
+    width: 100%;
+
     /* for absolute/fixed position children */
     position: relative;
 
@@ -152,7 +157,8 @@ ul li a {
     /* pushed to front */
     z-index: 100;
     width: 100%;
-    min-height: 100%;
+    height: 100%;
+
     top: 0px; 
     bottom: 0px;
     color: white;

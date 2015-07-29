@@ -105,6 +105,7 @@ var publicFuncs = (function () {
 
             li = document.createElement("li");
             li.appendChild(document.createTextNode("No games today :)"));
+            li.style.padding = "25px";
             games.appendChild(li);
         }
     }

@@ -23,7 +23,8 @@ module.exports = (args, req, res) => {
             } else {
 
                 res.writeHead(200, { "Content-Type" : "text/json",
-                                     "Cache-Control" : "no-cache" });
+                                     "Cache-Control" : "no-cache",
+                                     "Access-Control-Allow-Origin": "*" });
                 res.end(JSON.stringify(data));
             }
         });

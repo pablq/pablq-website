@@ -52,7 +52,8 @@ function requestFromESPN (league, cb) {
             data += chunk;
         });
         gameRes.on("end", () => {
-            cb(null, getGames(qs.parse(data, null, null, { decodeURIComponent: decodeURIComponent }), league));
+            var parsedData = qs.parse(data, null, null, { decodeURIComponent: decodeURIComponent }) 
+            cb(null, getGames(parsedData, league));
         });
     });
 

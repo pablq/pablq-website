@@ -34,7 +34,7 @@ module.exports = (args, req, res) => {
 function requestFromESPN (league, cb) {
         
     var options = {
-            hostname: "sports.espn.go.com",
+            hostname: "espn.go.com",
             path: "/" + league + "/bottomline/scores",
             port: 80,
             method: "GET"
@@ -91,7 +91,7 @@ function getGames (data, league) {
             }
             games.push(formatGame(game,league));
 
-        })()
+        })();
     }
     return games;
 }

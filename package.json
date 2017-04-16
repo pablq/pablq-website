@@ -1,11 +1,11 @@
 {
-  "name": "pablq-org",
-  "version": "0.0.1",
-  "description": "a sketch for a website",
+  "name": "pablq-website",
+  "version": "1.0.0",
+  "description": "Gets sports scores.",
   "main": "server.js",
   "scripts": {
-    "test": "node --harmony server.js",
-    "start": "node --harmony server.js"
+    "test": "node server.js",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -16,8 +16,8 @@
   ],
   "author": "pablq",
   "license": "ISC",
-  "homepage": "http://pablq.org",
+  "homepage": "http://pablq.website",
   "engines": {
-    "node": "v0.12.2"
+    "node": "v7.4.0"
   }
 }

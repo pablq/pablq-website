@@ -116,74 +116,7 @@ var publicFuncs = (function () {
         }
     }
 
-    function createButtonImageStrings() {
-        var buttonImageStrings = [],
-            n;
-
-        for (n = 1; n <= 22; n += 1) {
-            buttonImageStrings.push("/img/button_backgrounds/" + n + ".jpg");
-        }
-        return buttonImageStrings;
-    }
-
-    function createBackgroundImageStrings() {
-        var backgroundImageStrings = [],
-            n;
-
-        for (n = 1; n <= 22; n += 1) {
-            backgroundImageStrings.push("/img/backgrounds/" + n + "-pos.png");
-        }
-        return backgroundImageStrings;
-    }
-
-    function createBodyBackgroundImageStrings() {
-        var bodyBackgroundImageStrings = [],
-            n;
-
-        for (n = 1; n <= 22; n += 1) {
-            bodyBackgroundImageStrings.push("url(/img/backgrounds/" + n + "-pos.png), linear-gradient(to bottom right, white, gray, black)");
-        }
-        return bodyBackgroundImageStrings;
-    }
-
-    function getRandInRange(min, max) {
-        return Math.floor(Math.random() * (max - min)) + min;
-    }
-
-    function setBackgroundImage(id, url) {
-        var elm = document.getElementById(id);
-        elm.style.backgroundImage = "url(" + url + ")";
-    }
-
     function init() {
-        /* set background images */
-        var elements = [
-                { id: "button1", type: "button" },
-                { id: "button2", type: "button" },
-                { id: "button3", type: "button" },
-                { id: "button4", type: "button" },
-                { id: "container" }
-            ],
-            element,
-            images,
-            i,
-            len,
-            url;
-
-        for (i = 0, len = elements.length; i < len; i += 1) {
-            element = elements[i];
-            if (element.type === "button") {
-                images = createButtonImageStrings();
-            } else {
-                images = createBackgroundImageStrings();
-            }
-            url = images[getRandInRange(0, images.length - 1)];
-            setBackgroundImage(element.id, url);
-        }
-
-        images = createBodyBackgroundImageStrings();
-        document.body.style.backgroundImage = images[getRandInRange(0, images.length)];
-
         /* set click listener to close view of games */
         document.getElementById("invisible_close_button").addEventListener("click", close);
     }

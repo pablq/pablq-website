@@ -64,7 +64,7 @@ button {
     -webkit-transition: -webkit-transform .2s ease-in-out,
                         -webkit-box-shadow .1s ease-in-out;
     
-    background: gray; /* backup */
+    background-color: white;
 
     /* background-image set by javascript */
 } 

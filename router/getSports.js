@@ -1,4 +1,4 @@
-var http = require("http"),
+var https = require("https"),
     qs = require("querystring");
 
 module.exports = (args, req, res) => {
@@ -36,7 +36,6 @@ function requestFromESPN (league, cb) {
     var options = {
             hostname: "www.espn.com",
             path: "/" + league + "/bottomline/scores",
-            port: 80,
             method: "GET"
         },
         decodeURIComponent = function (c) {
@@ -44,7 +43,7 @@ function requestFromESPN (league, cb) {
             return c.replace(/%20/g," ");
         };
 
-    var gameReq = http.request(options, (gameRes) => {
+    var gameReq = https.request(options, (gameRes) => {
 
         var data = "";
         gameRes.setEncoding("utf8");

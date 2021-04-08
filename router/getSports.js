@@ -1,4 +1,5 @@
 var https = require("https"),
+    http = require("http"),
     qs = require("querystring");
 
 module.exports = (args, req, res) => {
@@ -13,10 +14,8 @@ module.exports = (args, req, res) => {
 
     } else {
 
-        requestFromESPN(league, (err, data) => {
-
+        requestGamesData(league, (err, data) => {
             if (err) {
-
                 res.writeHead(500, { "Content-Type" : "text/plain" });
                 res.end("SERVER ERROR\n");
 
@@ -25,42 +24,56 @@ module.exports = (args, req, res) => {
                 res.writeHead(200, { "Content-Type" : "text/json",
                                      "Cache-Control" : "no-cache",
                                      "Access-Control-Allow-Origin": "*" });
-                res.end(JSON.stringify(data));
+                var decodeURIComponent = function (c) {
+                    c = c.replace(/%(A|B|C)\w{1}(%20)+/,"");
+                    return c.replace(/%20/g," ");
+                };
+                var parsedData = qs.parse(data, null, null, { decodeURIComponent: decodeURIComponent });
+                var parsedGames = getGames(parsedData, league)
+                res.end(JSON.stringify(parsedGames));
             }
         });
     }
 };
 
-function requestFromESPN (league, cb) {
+function requestGamesData (league, cb) {
         
     var options = {
             hostname: "www.espn.com",
             path: "/" + league + "/bottomline/scores",
             method: "GET"
         },
-        decodeURIComponent = function (c) {
-            c = c.replace(/%(A|B|C)\w{1}(%20)+/,"");
-            return c.replace(/%20/g," ");
-        };
+        commonCallback = function(err, res, data) {
+            if (err) { cb(err); return; }
+            cb(null, data);
+        }
 
-    var gameReq = https.request(options, (gameRes) => {
+    makeRequest(https, options, (err, res, data) => {
+        if (res.statusCode == 302 && res.headers.location && res.headers.location.includes("http:")) {
+            makeRequest(http, res.headers.location, commonCallback);
+            return;
+        }
+        commonCallback(err, res, data);
+    });
+}
 
+function makeRequest (protocol, options, cb) {
+    var req = protocol.request(options, (res) => {
         var data = "";
-        gameRes.setEncoding("utf8");
-        gameRes.on("data", (chunk) => {
+        res.setEncoding("utf8");
+        res.on("data", (chunk) => {
             data += chunk;
         });
-        gameRes.on("end", () => {
-            var parsedData = qs.parse(data, null, null, { decodeURIComponent: decodeURIComponent }) 
-            cb(null, getGames(parsedData, league));
+        res.on("end", () => {
+            cb(null, res, data);
         });
     });
 
-    gameReq.on("error", (error) => {
-        cb(error);
+    req.on("error", (error) => {
+        cb(error, res);
     });
     
-    gameReq.end();
+    req.end();
 }
 
 function getGames (data, league) {

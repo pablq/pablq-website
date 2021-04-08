@@ -1,6 +1,6 @@
 {
   "name": "Latest Scores",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Gets today's sports scores.",
   "main": "server.js",
   "scripts": {
@@ -16,6 +16,6 @@
   "license": "ISC",
   "homepage": "https://pablq.website",
   "engines": {
-    "node": "v7.10.1"
+    "node": "*"
   }
 }

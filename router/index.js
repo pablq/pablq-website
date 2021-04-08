@@ -11,6 +11,8 @@ module.exports = (() => {
 
     return (req, res) => {
 
+        var path;
+
         if (req.headers["x-forwarded-proto"] !== "https") {
             res.writeHead(301, {
                 "Location": "https://" + req.headers.host + req.url
@@ -25,7 +27,7 @@ module.exports = (() => {
             return;
         }
 
-        var path = req.url.match(/\w+/g);
+        path = req.url.match(/\w+/g);
         if (path && routes[path[0]]) {
             routes[path[0]](path.slice(1), req, res);
         } else {

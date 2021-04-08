@@ -1,12 +1,12 @@
 var https = require("https"),
     http = require("http"),
-    qs = require("querystring");
+    queryString = require("querystring");
 
 module.exports = (args, req, res) => {
-    
+
     var leagues = [ "mlb", "nba", "nfl", "nhl" ],
         league = args[0];
-    
+
     if (leagues.indexOf(league) === -1) {
 
         res.writeHead(501, { "Content-Type" : "text/plain" });
@@ -15,22 +15,29 @@ module.exports = (args, req, res) => {
     } else {
 
         requestGamesData(league, (err, data) => {
+
+            var decodeURIComponent = function (c) {
+                    c = c.replace(/%(A|B|C)\w{1}(%20)+/,"");
+                    return c.replace(/%20/g," ");
+                },
+                parseQueryString = function (qs) {
+                    return queryString.parse(qs, null, null, { decodeURIComponent: decodeURIComponent });
+                },
+                games;
+
             if (err) {
+
                 res.writeHead(500, { "Content-Type" : "text/plain" });
                 res.end("SERVER ERROR\n");
 
             } else {
 
+                games = getGames(parseQueryString(data), league);
+
                 res.writeHead(200, { "Content-Type" : "text/json",
                                      "Cache-Control" : "no-cache",
                                      "Access-Control-Allow-Origin": "*" });
-                var decodeURIComponent = function (c) {
-                    c = c.replace(/%(A|B|C)\w{1}(%20)+/,"");
-                    return c.replace(/%20/g," ");
-                };
-                var parsedData = qs.parse(data, null, null, { decodeURIComponent: decodeURIComponent });
-                var parsedGames = getGames(parsedData, league)
-                res.end(JSON.stringify(parsedGames));
+                res.end(JSON.stringify(games));
             }
         });
     }
@@ -43,27 +50,36 @@ function requestGamesData (league, cb) {
             path: "/" + league + "/bottomline/scores",
             method: "GET"
         },
-        commonCallback = function(err, res, data) {
+        commonCallback = function (err, res, data) {
             if (err) { cb(err); return; }
             cb(null, data);
-        }
+        };
 
     makeRequest(https, options, (err, res, data) => {
-        if (res.statusCode == 302 && res.headers.location && res.headers.location.includes("http:")) {
+        if (res.statusCode == 302 && 
+            res.headers.location && 
+            res.headers.location.includes("http:")) {
+
             makeRequest(http, res.headers.location, commonCallback);
-            return;
+
+        } else {
+
+            commonCallback(err, res, data);
         }
-        commonCallback(err, res, data);
     });
 }
 
-function makeRequest (protocol, options, cb) {
-    var req = protocol.request(options, (res) => {
+function makeRequest (protocol, target, cb) {
+    var req = protocol.request(target, (res) => {
+
         var data = "";
+
         res.setEncoding("utf8");
+
         res.on("data", (chunk) => {
             data += chunk;
         });
+
         res.on("end", () => {
             cb(null, res, data);
         });
@@ -72,7 +88,7 @@ function makeRequest (protocol, options, cb) {
     req.on("error", (error) => {
         cb(error, res);
     });
-    
+
     req.end();
 }
 
@@ -94,10 +110,14 @@ function getGames (data, league) {
 
             while (kIndex < keys.length) {
                 key = keys[kIndex];
+
                 if (key.search(match) > -1) {
+
                     game[key] = data[key];
                     keys.splice(kIndex, 1);
+
                 } else {
+
                     kIndex += 1;
                 }
             }
@@ -114,8 +134,9 @@ function formatGame(game, league) {
         id = game._id,
         count = parseInt(game[league + "_s_right" + id + "_count"]),
         i;
-    
+
     for (i = 0; i < count; i += 1) {
+
         formatted["p" + (i + 1)] = game[league + "_s_right" + id + "_" + (i + 1)];
     }
 

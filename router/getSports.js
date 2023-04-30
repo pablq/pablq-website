@@ -14,37 +14,52 @@ module.exports = (args, req, res) => {
 
     } else {
 
-        requestGamesData(league, (err, data) => {
+        if (league === "nhl") {
+            requestNhlGamesData((err, data) => {
+                if (err) {
+                    res.writeHead(500, { "Content-Type" : "text/plain" });
+                    res.end("SERVER ERROR\n");
+                } else {
+                    res.writeHead(200, { "Content-Type" : "text/json",
+                                         "Cache-Control" : "no-cache",
+                                         "Access-Control-Allow-Origin": "*" });
+                    res.end(JSON.stringify(data));
+                }
+            })
+        } else {
+            requestGamesData(league, (err, data) => {
 
-            var decodeURIComponent = function (c) {
-                    c = c.replace(/%(A|B|C)\w{1}(%20)+/,"");
-                    return c.replace(/%20/g," ");
-                },
-                parseQueryString = function (qs) {
-                    return queryString.parse(qs, null, null, { decodeURIComponent: decodeURIComponent });
-                },
-                games;
+                var decodeURIComponent = function (c) {
+                        c = c.replace(/%(A|B|C)\w{1}(%20)+/,"");
+                        return c.replace(/%20/g," ");
+                    },
+                    parseQueryString = function (qs) {
+                        return queryString.parse(qs, null, null, { decodeURIComponent: decodeURIComponent });
+                    },
+                    games;
 
-            if (err) {
+                if (err) {
 
-                res.writeHead(500, { "Content-Type" : "text/plain" });
-                res.end("SERVER ERROR\n");
+                    res.writeHead(500, { "Content-Type" : "text/plain" });
+                    res.end("SERVER ERROR\n");
 
-            } else {
+                } else {
 
-                games = getGames(parseQueryString(data), league);
+                    // console.log(data);
 
-                res.writeHead(200, { "Content-Type" : "text/json",
-                                     "Cache-Control" : "no-cache",
-                                     "Access-Control-Allow-Origin": "*" });
-                res.end(JSON.stringify(games));
-            }
-        });
+                    games = getGames(parseQueryString(data), league);
+
+                    res.writeHead(200, { "Content-Type" : "text/json",
+                                         "Cache-Control" : "no-cache",
+                                         "Access-Control-Allow-Origin": "*" });
+                    res.end(JSON.stringify(games));
+                }
+            });
+        }
     }
 };
 
 function requestGamesData (league, cb) {
-        
     var options = {
             hostname: "www.espn.com",
             path: "/" + league + "/bottomline/scores",
@@ -59,11 +74,46 @@ function requestGamesData (league, cb) {
         if (res.statusCode == 302 && 
             res.headers.location && 
             res.headers.location.includes("http:")) {
-
             makeRequest(http, res.headers.location, commonCallback);
-
         } else {
+            commonCallback(err, res, data);
+        }
+    });
+}
 
+function requestNhlGamesData(cb) {
+    var options = {
+            hostname: "statsapi.web.nhl.com",
+            path: "/api/v1/schedule/games",
+            method: "GET"
+        },
+        commonCallback = function (err, res, data) {
+            if (err) { cb(err); return; }
+            try {
+                var games = [];
+                var json = JSON.parse(data)
+                if (json.dates && json.dates[0] && json.dates[0].games) {
+                    json.dates[0].games.forEach((game) => {
+                        console.log(game);
+                        games.push({
+                            "headline" : game.teams.away.team.name + " vs. " + game.teams.home.team.name,
+                            "link" : "https://statsapi.web.nhl.com" + game.link,
+                            "lineCount": 0,
+                        });
+                    });
+                }
+                cb(null, games);
+            } catch (exception) {
+                cb(exception, null);
+            }            
+        };
+
+    makeRequest(https, options, (err, res, data) => {
+        if (res.statusCode == 302 && 
+            res.headers.location && 
+            res.headers.location.includes("http:")) {
+            makeRequest(http, res.headers.location, commonCallback);
+        } else {
             commonCallback(err, res, data);
         }
     });
@@ -93,6 +143,8 @@ function makeRequest (protocol, target, cb) {
 }
 
 function getGames (data, league) {
+
+    // console.log(data);
 
     var count,
         totalCount = parseInt(data[league + "_s_count"]),

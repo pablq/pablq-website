@@ -44,9 +44,6 @@ module.exports = (args, req, res) => {
                     res.end("SERVER ERROR\n");
 
                 } else {
-
-                    // console.log(data);
-
                     games = getGames(parseQueryString(data), league);
 
                     res.writeHead(200, { "Content-Type" : "text/json",
@@ -94,7 +91,6 @@ function requestNhlGamesData(cb) {
                 var json = JSON.parse(data)
                 if (json.dates && json.dates[0] && json.dates[0].games) {
                     json.dates[0].games.forEach((game) => {
-                        console.log(game);
                         games.push({
                             "headline" : game.teams.away.team.name + " vs. " + game.teams.home.team.name,
                             "link" : "https://statsapi.web.nhl.com" + game.link,
@@ -143,9 +139,6 @@ function makeRequest (protocol, target, cb) {
 }
 
 function getGames (data, league) {
-
-    // console.log(data);
-
     var count,
         totalCount = parseInt(data[league + "_s_count"]),
         keys = Object.keys(data),

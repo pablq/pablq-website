@@ -92,9 +92,10 @@ function requestNhlGamesData(cb) {
                 if (json.dates && json.dates[0] && json.dates[0].games) {
                     json.dates[0].games.forEach((game) => {
                         games.push({
-                            "headline" : game.teams.away.team.name + " vs. " + game.teams.home.team.name,
+                            "headline" : game.teams.away.team.name + " " + game.teams.away.score + " " + game.teams.home.team.name + " " + game.teams.home.score,
+                            "p1": game.status.detailedState,
                             "link" : "https://statsapi.web.nhl.com" + game.link,
-                            "lineCount": 0,
+                            "lineCount": 1,
                         });
                     });
                 }

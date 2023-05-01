@@ -12,7 +12,7 @@ module.exports = (args, req, res) => {
         res.end("CANNOT GET " + league);
 
     } else {
-        var commonCallback = (error, games) => {
+        var cb = (error, games) => {
             if (error) {
                 res.writeHead(500, { "Content-Type" : "text/plain" });
                 res.end("SERVER ERROR\n");
@@ -22,23 +22,12 @@ module.exports = (args, req, res) => {
                                      "Access-Control-Allow-Origin": "*" });
                 res.end(JSON.stringify(games));
             }
-        }
+        };
 
         if (league === "nhl") {
-            requestNhlGamesData(commonCallback);
+            requestNhlGamesData(cb);
         } else {
-            requestGamesData(league, (err, data) => {
-
-                var decodeURIComponent = function (c) {
-                        c = c.replace(/%(A|B|C)\w{1}(%20)+/,"");
-                        return c.replace(/%20/g," ");
-                    },
-                    parseQueryString = function (qs) {
-                        return queryString.parse(qs, null, null, { decodeURIComponent: decodeURIComponent });
-                    };
-
-                commonCallback(err, getGames(parseQueryString(data ?? "[]"), league));
-            });
+            requestGamesData(league, cb);
         }
     }
 };
@@ -49,12 +38,22 @@ function requestGamesData (league, cb) {
             path: "/" + league + "/bottomline/scores",
             method: "GET"
         },
-        commonCallback = function (err, res, data) {
+        makeRequestCb = function (err, _, data) {
             if (err) { cb(err); return; }
-            cb(null, data);
+
+            var decodeURIComponent = function (c) {
+                c = c.replace(/%(A|B|C)\w{1}(%20)+/,"");
+                return c.replace(/%20/g," ");
+            },
+            parseQueryString = function (qs) {
+                return queryString.parse(qs, null, null, { decodeURIComponent: decodeURIComponent });
+            };
+        
+            var games = getGames(parseQueryString(data ?? "[]"), league);
+            cb(null, games);
         };
 
-    makeRequest(https, options, commonCallback);
+    makeRequest(https, options, makeRequestCb);
 }
 
 function requestNhlGamesData(cb) {
@@ -63,7 +62,7 @@ function requestNhlGamesData(cb) {
             path: "/api/v1/schedule/games",
             method: "GET"
         },
-        commonCallback = function (err, res, data) {
+        makeRequestCb = function (err, res, data) {
             if (err) { cb(err); return; }
             try {
                 var games = [];
@@ -87,7 +86,7 @@ function requestNhlGamesData(cb) {
                         makeRequest(https, gameDetailOptions, (err, res, data) => {
                             if (!err && data) {
                                 var gameDetail = JSON.parse(data);
-                                game.p2 = gameDetail.liveData.linescore.currentPeriodOrdinal + " period - " + gameDetail.liveData.linescore.currentPeriodTimeRemaining + " remaining";
+                                game.p2 = gameDetail.liveData.linescore.currentPeriodOrdinal + " Period - Time left: " + gameDetail.liveData.linescore.currentPeriodTimeRemaining;
                                 game.lineCount = 2;
                             }
                             games.push(game);
@@ -104,15 +103,16 @@ function requestNhlGamesData(cb) {
             }            
         };
 
-    makeRequest(https, options, commonCallback);
+    makeRequest(https, options, makeRequestCb);
 }
 
 function makeRequest (protocol, target, cb) {
+
     var rerouteHttpCallback = (err, res, data) => {
         if (res.statusCode == 302 && 
             res.headers.location && 
             res.headers.location.includes("http:")) {
-            makeRequest(http, res.headers.location, commonCallback);
+            makeRequest(http, res.headers.location, cb);
         } else {
             cb(err, res, data);
         }
@@ -140,7 +140,7 @@ function makeRequest (protocol, target, cb) {
     req.end();
 }
 
-function getGames (data, league) {
+function getGames(data, league) {
     var count,
         totalCount = parseInt(data[league + "_s_count"]),
         keys = Object.keys(data),

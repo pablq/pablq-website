@@ -1,4 +1,4 @@
-var publicFuncs = (function () {
+var publicFuncs = (function() {
 
     "use strict";
 
@@ -27,10 +27,11 @@ var publicFuncs = (function () {
             xmlhttp = new XMLHttpRequest({mozAnon: true});
         } else {
             // for IE6, IE5
+            // eslint-disable-next-line no-undef
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
 
-        xmlhttp.onreadystatechange = function () {
+        xmlhttp.onreadystatechange = function() {
 
             if (xmlhttp.readyState === XMLHttpRequest.DONE) {
                 if (xmlhttp.status === 200) {
@@ -68,13 +69,13 @@ var publicFuncs = (function () {
             j;
 
         deleteChildNodes(games);
-        
+
         if (fail) {
-            
+
             li = document.createElement("li");
             li.appendChild(document.createTextNode("Sorry, there was a problem. :("));
             games.appendChild(li);
-            
+
         } else if (data && data.length) {
 
             for (i = 0, len = data.length; i < len; i += 1) {
@@ -122,7 +123,7 @@ var publicFuncs = (function () {
     }
 
     function show(league) {
-        requestGames(league, function (error, games) {
+        requestGames(league, function(error, games) {
             // buildHtml handles failed requests
             buildHtml(games, error);
 

@@ -2,7 +2,7 @@ var https = require("https"),
     http = require("http"),
     queryString = require("querystring");
 
-module.exports = (args, req, res) => {
+module.exports = (args, _, res) => {
 
     var leagues = [ "mlb", "nba", "nfl", "nhl" ],
         league = args[0];
@@ -70,7 +70,7 @@ function requestNhlGamesData(cb) {
                 if (json.dates && json.dates[0] && json.dates[0].games) {
                     var numRequests = json.dates[0].games.length;
                     json.dates[0].games.forEach((game) => {
-                        var game = {
+                        var result = {
                             "headline" : game.teams.away.team.name + " " + game.teams.away.score + " at " + game.teams.home.team.name + " " + game.teams.home.score,
                             "p1": game.status.detailedState,
                             "link" : "https://statsapi.web.nhl.com" + game.link,
@@ -79,17 +79,17 @@ function requestNhlGamesData(cb) {
 
                         var gameDetailOptions = {
                             hostname: "statsapi.web.nhl.com",
-                            path: game.link,
+                            path: result.link,
                             method: "GET"
                         };
 
                         makeRequest(https, gameDetailOptions, (err, res, data) => {
                             if (!err && data) {
                                 var gameDetail = JSON.parse(data);
-                                game.p2 = gameDetail.liveData.linescore.currentPeriodOrdinal + " Period - Time left: " + gameDetail.liveData.linescore.currentPeriodTimeRemaining;
-                                game.lineCount = 2;
+                                result.p2 = gameDetail.liveData.linescore.currentPeriodOrdinal + " Period - Time left: " + gameDetail.liveData.linescore.currentPeriodTimeRemaining;
+                                result.lineCount = 2;
                             }
-                            games.push(game);
+                            games.push(result);
                             numRequests -= 1;
                             if (numRequests <= 0) {
                                 cb(null, games);
@@ -134,7 +134,7 @@ function makeRequest (protocol, target, cb) {
     });
 
     req.on("error", (error) => {
-        rerouteHttpCallback(error, res, null);
+        cb(error, null, null);
     });
 
     req.end();

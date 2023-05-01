@@ -13,13 +13,13 @@ module.exports = (() => {
 
         var path;
 
-        // if (req.headers["x-forwarded-proto"] !== "https") {
-        //     res.writeHead(301, {
-        //         "Location": "https://" + req.headers.host + req.url
-        //     }); 
-        //     res.end("Moved Permanently\n");
-        //     return;
-        // } 
+        if (req.headers["x-forwarded-proto"] !== "https") {
+            res.writeHead(301, {
+                "Location": "https://" + req.headers.host + req.url
+            }); 
+            res.end("Moved Permanently\n");
+            return;
+        } 
 
         if (req.method !== "GET") {
             res.writeHead(501, { "Content-Type" : "text/plain" });

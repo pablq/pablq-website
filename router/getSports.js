@@ -54,15 +54,7 @@ function requestGamesData (league, cb) {
             cb(null, data);
         };
 
-    makeRequest(https, options, (err, res, data) => {
-        if (res.statusCode == 302 && 
-            res.headers.location && 
-            res.headers.location.includes("http:")) {
-            makeRequest(http, res.headers.location, commonCallback);
-        } else {
-            commonCallback(err, res, data);
-        }
-    });
+    makeRequest(https, options, commonCallback);
 }
 
 function requestNhlGamesData(cb) {
@@ -78,26 +70,31 @@ function requestNhlGamesData(cb) {
                 var json = JSON.parse(data)
                 if (json.dates && json.dates[0] && json.dates[0].games) {
                     var numRequests = json.dates[0].games.length;
-                    console.log("og num requests" + numRequests);
                     json.dates[0].games.forEach((game) => {
                         var game = {
-                            "headline" : game.teams.away.team.name + " " + game.teams.away.score + " " + game.teams.home.team.name + " " + game.teams.home.score,
+                            "headline" : game.teams.away.team.name + " " + game.teams.away.score + " at " + game.teams.home.team.name + " " + game.teams.home.score,
                             "p1": game.status.detailedState,
                             "link" : "https://statsapi.web.nhl.com" + game.link,
                             "lineCount": 1,
                         }
-                        getNhlGameDetail(game.link, (detail) => {
-                            if (detail) {
-                                detail = JSON.parse(detail);
-                                game.p2 = detail.liveData.linescore.currentPeriodOrdinal + " period w/" + detail.liveData.linescore.currentPeriodTimeRemaining + " remaining.";
+
+                        var gameDetailOptions = {
+                            hostname: "statsapi.web.nhl.com",
+                            path: game.link,
+                            method: "GET"
+                        };
+
+                        makeRequest(https, gameDetailOptions, (err, res, data) => {
+                            if (!err && data) {
+                                var gameDetail = JSON.parse(data);
+                                game.p2 = gameDetail.liveData.linescore.currentPeriodOrdinal + " period - " + gameDetail.liveData.linescore.currentPeriodTimeRemaining + " remaining";
                                 game.lineCount = 2;
                             }
                             games.push(game);
                             numRequests -= 1;
-                            console.log(numRequests);
                             if (numRequests <= 0) {
-                                cb(null, games);                
-                            }   
+                                cb(null, games);
+                            }
                         });
                     });
                 }
@@ -107,39 +104,20 @@ function requestNhlGamesData(cb) {
             }            
         };
 
-    makeRequest(https, options, (err, res, data) => {
-        if (res.statusCode == 302 && 
-            res.headers.location && 
-            res.headers.location.includes("http:")) {
-            makeRequest(http, res.headers.location, commonCallback);
-        } else {
-            commonCallback(err, res, data);
-        }
-    });
-}
-
-function getNhlGameDetail(link, cb) {
-    var options = {
-            hostname: "statsapi.web.nhl.com",
-            path: link,
-            method: "GET"
-        };
-    makeRequest(https, options, (err, res, data) => {
-        if (res.statusCode == 302 && 
-            res.headers.location && 
-            res.headers.location.includes("http:")) {
-            makeRequest(http, res.headers.location, commonCallback);
-        } else {
-            if (err) {
-                cb(null);
-            } else {
-                cb(data);
-            }
-        }
-    });
+    makeRequest(https, options, commonCallback);
 }
 
 function makeRequest (protocol, target, cb) {
+    var rerouteHttpCallback = (err, res, data) => {
+        if (res.statusCode == 302 && 
+            res.headers.location && 
+            res.headers.location.includes("http:")) {
+            makeRequest(http, res.headers.location, commonCallback);
+        } else {
+            cb(err, res, data);
+        }
+    }
+
     var req = protocol.request(target, (res) => {
 
         var data = "";
@@ -151,12 +129,12 @@ function makeRequest (protocol, target, cb) {
         });
 
         res.on("end", () => {
-            cb(null, res, data);
+            rerouteHttpCallback(null, res, data);
         });
     });
 
     req.on("error", (error) => {
-        cb(error, res);
+        rerouteHttpCallback(error, res, null);
     });
 
     req.end();

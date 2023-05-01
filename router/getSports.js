@@ -49,7 +49,10 @@ function requestGamesData (league, cb) {
                 return queryString.parse(qs, null, null, { decodeURIComponent: decodeURIComponent });
             };
         
-            var games = getGames(parseQueryString(data ?? "[]"), league);
+            var games = [];
+            if (data) {
+                games = getGames(parseQueryString(data), league);
+            }
             cb(null, games);
         };
 

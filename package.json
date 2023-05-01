@@ -17,5 +17,8 @@
   "homepage": "https://pablq.website",
   "engines": {
     "node": "*"
+  },
+  "devDependencies": {
+    "eslint": "^8.39.0"
   }
 }
